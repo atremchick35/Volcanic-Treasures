@@ -1,2 +1,2 @@
-# Volcano-Treasures
+# Volcanic-Treasures
 Creating a game
