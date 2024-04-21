@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetButton("Jump") && _isContact)
         {
-            _rigidbody.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            _rigidbody.AddForce(new Vector2(0, jumpForce));
             _isContact = false;
         }
     }
