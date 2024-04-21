@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class Example : MonoBehaviour
+public class Movement : MonoBehaviour
 {
+    [SerializeField] private float _speed;
+    
     // Start is called before the first frame update
     void Start()
     {
