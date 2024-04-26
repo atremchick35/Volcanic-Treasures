@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private int Coins { get; set; }
     private int Diamonds { get; set; }
-
+    
     public void AddCoins(int coinsAmount) => Coins += coinsAmount;
     public void AddDiamonds(int diamondsAmount) => Diamonds += diamondsAmount;
     public void Death() => Destroy(gameObject);
