@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     private Rigidbody2D _rigidbody;
     private bool _isContact;
-    [FormerlySerializedAs("Speed")] public float speed;
+    [[FormerlySerializedAs("Speed")] [SerializeField] public float speed;
     [FormerlySerializedAs("Jump Force")] [SerializeField] private float jumpForce;
     
     // Start is called before the first frame update
