@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 public class Movement : MonoBehaviour
 {
-    [FormerlySerializedAs("Speed")] [SerializeField] private float speed;
+    [FormerlySerializedAs("Speed")] [SerializeField] public float speed;
     [FormerlySerializedAs("Jump Force")] [SerializeField] private float jumpForce;
     private Rigidbody2D _rigidbody;
     private bool _isContact;
