@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Chest") && Key && Key.CompareTag("ChestKey"))
         {
+            other.GetComponent<Animator>().SetTrigger("ChestOpen");
             Key.rb.velocity = new Vector2(0, 0);
             Destroy(Key.gameObject);
         }
