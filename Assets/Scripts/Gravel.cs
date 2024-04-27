@@ -26,15 +26,16 @@ public class Gravel : MonoBehaviour, IInteractable
         {
             Debug.Log("Gravel crumbling");
             _collider2D.isTrigger = false;
-            StartCoroutine(Timer(delay));
+            Destroy(gameObject, delay);
+            // StartCoroutine(Timer(delay));
         }
     }
 
-    private IEnumerator Timer(float duration)  {
-        // Eventual code to execute right as the function is called
-        yield return new WaitForSeconds(duration);
-        // The code from here will be executed after **duration** seconds
-        Destroy(gameObject);
-        Debug.Log("Gravel crumbled");
-    }
+    // private IEnumerator Timer(float duration)  {
+    //     // Eventual code to execute right as the function is called
+    //     yield return new WaitForSeconds(duration);
+    //     // The code from here will be executed after **duration** seconds
+    //     Destroy(gameObject);
+    //     Debug.Log("Gravel crumbled");
+    // }
 }
