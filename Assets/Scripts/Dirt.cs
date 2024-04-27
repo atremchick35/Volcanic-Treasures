@@ -37,4 +37,9 @@ public class Dirt : MonoBehaviour, IEffectable
     public void KillPlayer()
     {
     }
+
+	public void OnTriggerExit2D(Collider2D other)
+	{
+		
+	}
 }

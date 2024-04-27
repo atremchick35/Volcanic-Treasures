@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public void AddCoins(int coinsAmount) => Coins += coinsAmount;
     public void AddDiamonds(int diamondsAmount) => Diamonds += diamondsAmount;
     public void Death() => Destroy(gameObject);
+    public bool HasRingLava;
     
     // Start is called before the first frame update
     void Start()
