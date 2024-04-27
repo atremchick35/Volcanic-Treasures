@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Dirt : MonoBehaviour, IEffectable
 {
-    [SerializeField] private float slowdown;
+    [FormerlySerializedAs("Slowdown")][SerializeField] private float slowdown;
     private Movement _player;
     
     void Start()

@@ -1,9 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
     private int Coins { get; set; }
     private int Diamonds { get; set; }
+
+    public bool hasHelmet;
     
     public void AddCoins(int coinsAmount) => Coins += coinsAmount;
     public void AddDiamonds(int diamondsAmount) => Diamonds += diamondsAmount;

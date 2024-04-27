@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Gravel : MonoBehaviour, IInteractable
 {
     private Collider2D _collider2D;
-    [SerializeField] private float delay;
+    [FormerlySerializedAs("Delay")][SerializeField] private float delay;
     
     // Start is called before the first frame update
     void Start()
@@ -27,15 +24,6 @@ public class Gravel : MonoBehaviour, IInteractable
             Debug.Log("Gravel crumbling");
             _collider2D.isTrigger = false;
             Destroy(gameObject, delay);
-            // StartCoroutine(Timer(delay));
         }
     }
-
-    // private IEnumerator Timer(float duration)  {
-    //     // Eventual code to execute right as the function is called
-    //     yield return new WaitForSeconds(duration);
-    //     // The code from here will be executed after **duration** seconds
-    //     Destroy(gameObject);
-    //     Debug.Log("Gravel crumbled");
-    // }
 }
