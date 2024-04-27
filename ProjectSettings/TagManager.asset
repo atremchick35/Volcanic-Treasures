@@ -8,7 +8,6 @@ TagManager:
   - DoorKey
   - Chest
   - ChestKey
-  - Dirt
   layers:
   - Default
   - TransparentFX

@@ -1,13 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 public class Gravel : MonoBehaviour, IInteractable
 {
     private Collider2D _collider2D;
-    [SerializeField] private float delay;
+    [FormerlySerializedAs("Delay")] [SerializeField] private float delay;
     
     // Start is called before the first frame update
     void Start()

@@ -1,4 +1,5 @@
-using System;
+using Interfaces;
+using Player_Scripts;
 using UnityEngine;
 
 public class Dirt : MonoBehaviour, IEffectable

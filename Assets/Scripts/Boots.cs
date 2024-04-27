@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using Interfaces;
+using Player_Scripts;
 using UnityEngine;
 
 public class Boots : MonoBehaviour, IEffectable

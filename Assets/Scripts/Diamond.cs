@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
+using Player_Scripts;
 using UnityEngine;
 
 public class Diamond : MonoBehaviour, IInteractable
