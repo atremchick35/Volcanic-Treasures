@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Interfaces;
+using Player_Scripts;
 using UnityEngine;
 
 public class StalactiteUp : MonoBehaviour, IEffectable
@@ -20,7 +22,6 @@ public class StalactiteUp : MonoBehaviour, IEffectable
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void OnTriggerEnter2D(Collider2D other) // Stay?

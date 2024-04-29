@@ -1,5 +1,6 @@
 using Interfaces;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Player_Scripts
 {
@@ -8,6 +9,8 @@ namespace Player_Scripts
         private static readonly int ChestOpen = Animator.StringToHash("ChestOpen");
         private int Coins { get; set; }
         private int Diamonds { get; set; }
+
+        public bool hasHelmet;
         public Key Key { get; set; }
         public IEffectable[] Effects { get; set; }
         public void AddCoins(int coinsAmount) => Coins += coinsAmount;
