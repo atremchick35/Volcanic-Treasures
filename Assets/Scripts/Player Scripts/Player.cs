@@ -5,7 +5,6 @@ namespace Player_Scripts
 {
     public class Player : MonoBehaviour
     {
-        private static readonly int ChestOpen = Animator.StringToHash("ChestOpen");
         private int Coins { get; set; }
         private int Diamonds { get; set; }
         public Key Key { get; set; }
@@ -40,7 +39,7 @@ namespace Player_Scripts
         {
             if (other.CompareTag("Chest") && Key && Key.CompareTag("ChestKey"))
             {
-                other.GetComponent<Animator>().SetTrigger(ChestOpen);
+                other.GetComponent<Animator>().SetTrigger("ChestOpen");
                 Key.Rigidbody.velocity = new Vector2(0, 0);
                 Destroy(Key.gameObject);
             }

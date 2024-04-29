@@ -28,7 +28,7 @@ public class Key : MonoBehaviour, IInteractable
     {
         if (_active) // Проверяет подобрал ли игрок ключ
         {
-            var direction = _player.position - transform.position + new Vector3(0, 1);
+            var direction = _player.position - transform.position + new Vector3(0, 0.5f);
             if (direction.magnitude >= epsilon)
                 Rigidbody.velocity = new Vector2(direction.x, direction.y) * speed;
         }
