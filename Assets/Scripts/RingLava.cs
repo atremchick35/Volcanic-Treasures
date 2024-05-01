@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RingLava : MonoBehaviour, IEffectable
 {
-	public Player _player;
+	private Player _player;
+	private Lavash _lavash;
 	public void KillPlayer()
 	{
 		
@@ -12,20 +13,24 @@ public class RingLava : MonoBehaviour, IEffectable
 
 	public void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.CompareTag("Player"))
-		{
-			_player.HasRingLava = true;
-			StartCoroutine(SetVariableForDuration(5));
-			GetComponent<Renderer>().enabled = false;
-			Destroy(gameObject);
-		}
+		
 	}
 
 	private IEnumerator SetVariableForDuration(float duration)
 	{
 		yield return new WaitForSeconds(duration);
-		Destroy(gameObject);
 		_player.HasRingLava = false;
+		Destroy(gameObject);
+	}
+
+	private void OnTriggerStay2D(Collider2D collision)
+	{
+		if (collision.CompareTag("Player"))
+		{
+			_player.HasRingLava = true;
+			StartCoroutine(SetVariableForDuration(5));
+			GetComponent<Renderer>().enabled = false;
+		}
 	}
 
 	public void OnTriggerExit2D(Collider2D other)
