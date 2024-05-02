@@ -2,11 +2,9 @@ using UnityEngine;
 
 namespace Interfaces
 {
-	public interface IEffectable
+	public interface ITrapable
 	{
 		void OnTriggerEnter2D(Collider2D other);
-	
-		void OnTriggerExit2D(Collider2D other);
 	
 		void KillPlayer();
 	}

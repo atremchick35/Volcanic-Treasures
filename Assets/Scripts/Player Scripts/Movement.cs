@@ -9,10 +9,16 @@ namespace Player_Scripts
         private Rigidbody2D _rigidbody;
         private bool _isContact;
         private bool _isLadder;
-        [FormerlySerializedAs("Speed")] [SerializeField] public float speed;
-        [FormerlySerializedAs("Jump Force")] [SerializeField] public float jumpForce;
+
+        [FormerlySerializedAs("Speed")] [SerializeField] private float speed;
+        [FormerlySerializedAs("Jump Force")] [SerializeField] private float jumpForce;
         [FormerlySerializedAs("Climb Speed")] [SerializeField] public float climbSpeed;
-    
+
+        public void SetSpeed(float acceleration) => speed *= acceleration;
+        public void ResetSpeed(float acceleration) => speed /= acceleration;
+        public void SetJumpForce(float acceleration) => jumpForce *= acceleration;
+        public void ResetJumpForce(float acceleration) => jumpForce /= acceleration;
+        
         // Start is called before the first frame update
         void Start()
         {

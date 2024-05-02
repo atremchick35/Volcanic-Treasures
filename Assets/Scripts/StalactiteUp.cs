@@ -5,11 +5,8 @@ using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 
-public class StalactiteUp : MonoBehaviour, IEffectable
+public class StalactiteUp : MonoBehaviour, ITrapable
 {
-    // если игрок находится рядом, то падает(брать область внизу стены)
-    // как только сталкивается с коллайдером пола, уничтожается(можно сделать небольшую задержку)
-
     private Player _player;
     
     // Start is called before the first frame update
@@ -24,22 +21,18 @@ public class StalactiteUp : MonoBehaviour, IEffectable
     {
     }
 
-    public void OnTriggerEnter2D(Collider2D other) // Stay?
+    public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
             GetComponent<Rigidbody2D>().gravityScale = 2;
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.collider.CompareTag("Player") && !_player.hasHelmet)
+        if (other.collider.CompareTag("Player") && !_player.HasHelmet)
             KillPlayer();
         else
             Destroy(gameObject, 0.1f);
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
     }
 
     public void KillPlayer() => _player.Death();

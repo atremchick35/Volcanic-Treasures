@@ -4,7 +4,7 @@ using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 
-public class Spike : MonoBehaviour, IEffectable
+public class Spike : MonoBehaviour, ITrapable
 {
     private Player _player;
     
@@ -23,10 +23,6 @@ public class Spike : MonoBehaviour, IEffectable
     {
         if (other.CompareTag("Player"))
             KillPlayer();
-    }
-
-    public void OnTriggerExit2D(Collider2D other)
-    {
     }
 
     public void KillPlayer() => _player.Death();
