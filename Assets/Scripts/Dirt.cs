@@ -1,41 +1,45 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using Interfaces;
+using Player_Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Dirt : MonoBehaviour, IEffectable
+public class Dirt : MonoBehaviour, IBuffable
 {
-    [SerializeField] private float slowdown;
-    private Collider2D _collider2D;
-    private bool _isContact;
+    [FormerlySerializedAs("Slowdown")][SerializeField] private float slowdown;
     private Movement _player;
-    
-    void Start()
+
+    private void Start()
     {
-        _player = GameObject.FindWithTag("Player").GetComponent<Movement>();
     }
 
+    private void Update()
+    {
+    }
+
+    public void AddBuff(GameObject player)
+    {
+        _player = player.GetComponent<Movement>();
+        _player.SetSpeed(slowdown);
+        _player.SetJumpForce(slowdown);
+    }
+
+    public void RemoveBuff()
+    {
+        _player.ResetSpeed(slowdown);
+        _player.ResetJumpForce(slowdown);
+    }
+    
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            if (!_isContact)
-            {
-                _player.speed *= slowdown;
-                _isContact = true;
-            }
-        }
-        else if (_isContact)
-        {
-            Debug.Log("Speed is recovered");
-            _player.speed /= slowdown;
-            _isContact = false;
-        }
+            AddBuff(other.gameObject);
     }
-    
-    public void KillPlayer()
+
+    public void OnTriggerExit2D(Collider2D other)
     {
+        if (other.CompareTag("Player"))
+            RemoveBuff();
     }
 
 	public void OnTriggerExit2D(Collider2D other)

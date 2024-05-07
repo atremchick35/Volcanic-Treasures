@@ -1,4 +1,6 @@
 using System;
+using Interfaces;
+using Player_Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -6,14 +8,14 @@ public class Key : MonoBehaviour, IInteractable
 {
     private bool _active;
     private Transform _player;
-    public Rigidbody2D rb;
+    [NonSerialized] public Rigidbody2D Rigidbody;
     [FormerlySerializedAs("Epsilon")] [SerializeField] private double epsilon;
     [FormerlySerializedAs("Speed")] [SerializeField] private float speed;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        Rigidbody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindWithTag("Player").transform;
     }
 
@@ -28,7 +30,7 @@ public class Key : MonoBehaviour, IInteractable
         {
             var direction = _player.position - transform.position + new Vector3(0, 1);
             if (direction.magnitude >= epsilon)
-                rb.velocity = new Vector2(direction.x, direction.y) * speed;
+                Rigidbody.velocity = new Vector2(direction.x, direction.y) * speed;
         }
     }
 
