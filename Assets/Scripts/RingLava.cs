@@ -23,19 +23,14 @@ public class RingLava : MonoBehaviour, IEffectable
 		Destroy(gameObject);
 	}
 
-	private void OnTriggerStay2D(Collider2D collision)
+	public void OnTriggerExit2D(Collider2D other)
 	{
-		if (collision.CompareTag("Player"))
+		if (other.CompareTag("Player"))
 		{
 			_player.HasRingLava = true;
 			StartCoroutine(SetVariableForDuration(5));
 			GetComponent<Renderer>().enabled = false;
 		}
-	}
-
-	public void OnTriggerExit2D(Collider2D other)
-	{
-		
 	}
 
 	// Start is called before the first frame update
