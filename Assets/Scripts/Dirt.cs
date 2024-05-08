@@ -42,8 +42,5 @@ public class Dirt : MonoBehaviour, IBuffable
             RemoveBuff();
     }
 
-	public void OnTriggerExit2D(Collider2D other)
-	{
-		
-	}
+	
 }
