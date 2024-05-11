@@ -41,4 +41,6 @@ public class Dirt : MonoBehaviour, IBuffable
         if (other.CompareTag("Player"))
             RemoveBuff();
     }
+
+	
 }
