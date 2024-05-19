@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &1976922538 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8058830426481159422, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
+  m_PrefabInstance: {fileID: 5359159325705737944}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4678408417484011699
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -188,6 +193,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2533201478788077268, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
+      propertyPath: m_GravityScale
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6083632590973308481, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
       propertyPath: m_Name
       value: PlayerPrefab
@@ -235,13 +244,19 @@ PrefabInstance:
     - target: {fileID: 6997325950641945396, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1976922538}
     - target: {fileID: 7962532374089050357, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.1853876
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 8654641958729890157, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 344083136305924135, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 1308236407695300631, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8c2fcbb97a41ab4eac1d9381c3d16d5, type: 3}
