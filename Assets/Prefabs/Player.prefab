@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpForce: 500
-  climbSpeed: 0
+  climbSpeed: 10
 --- !u!70 &2720803600491955667
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
