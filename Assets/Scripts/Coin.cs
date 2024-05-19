@@ -1,9 +1,6 @@
-using System;
 using Interfaces;
 using Player_Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Coin : MonoBehaviour, IInteractable
 {
