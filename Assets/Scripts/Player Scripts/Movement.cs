@@ -6,6 +6,7 @@ namespace Player_Scripts
 {
     public class Movement : MonoBehaviour
     {
+        private Animator _animator;
         private Rigidbody2D _rigidbody;
         private bool _isContact;
         private bool _isLadder;
@@ -48,6 +49,7 @@ namespace Player_Scripts
             var horizontal = Input.GetAxis("Horizontal");
             _rigidbody.velocity = new Vector2(horizontal * speed, _rigidbody.velocity.y);
             _rigidbody.velocity.Normalize();
+            //_animator.SetFloat("HorizontalMove", Math.Abs(horizontal));
         }
 
         //Проверка на сопрекосновение с полом
@@ -64,5 +66,6 @@ namespace Player_Scripts
             if (other.CompareTag("Ladder"))
                 _isLadder = false;
         }
+        
     }
 }
