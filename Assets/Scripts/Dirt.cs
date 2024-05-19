@@ -1,40 +1,46 @@
+using System;
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class Dirt : MonoBehaviour, IEffectable
+public class Dirt : MonoBehaviour, IBuffable
 {
-    [SerializeField] private float slowdown;
+    [FormerlySerializedAs("Slowdown")][SerializeField] private float slowdown;
     private Movement _player;
-    
-    void Start()
+
+    private void Start()
     {
-        _player = GameObject.FindWithTag("Player").GetComponent<Movement>();
     }
 
     private void Update()
     {
     }
 
+    public void AddBuff(GameObject player)
+    {
+        _player = player.GetComponent<Movement>();
+        _player.SetSpeed(slowdown);
+        _player.SetJumpForce(slowdown);
+    }
+
+    public void RemoveBuff()
+    {
+        _player.ResetSpeed(slowdown);
+        _player.ResetJumpForce(slowdown);
+    }
+    
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            _player.speed *= slowdown;
-            _player.jumpForce *= slowdown;
-        }
+            AddBuff(other.gameObject);
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
-        {
-            _player.speed /= slowdown;
-            _player.jumpForce /= slowdown;
-        }
+            RemoveBuff();
     }
 
-    public void KillPlayer()
-    {
-    }
+	
 }

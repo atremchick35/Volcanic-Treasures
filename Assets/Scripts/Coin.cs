@@ -7,8 +7,10 @@ using UnityEngine.Serialization;
 
 public class Coin : MonoBehaviour, IInteractable
 {
+    private Player _player;
     private void Start()
     {
+        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     private void Update()
@@ -19,8 +21,7 @@ public class Coin : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            var player = other.GetComponent<Player>();
-            player.AddCoins(1);
+            _player.AddCoins(1);
             Destroy(gameObject);
             Debug.Log("Coin claimed");
         }
