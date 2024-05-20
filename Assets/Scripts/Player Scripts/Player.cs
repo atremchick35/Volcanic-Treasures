@@ -20,8 +20,6 @@ namespace Player_Scripts
         // Start is called before the first frame update
         void Start()
         {
-            Coins = 0;
-            Diamonds = 0;
         }
         
         // Update is called once per frame

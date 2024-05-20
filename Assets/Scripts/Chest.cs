@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class Chest : MonoBehaviour
 {
     private Animator _animator;
-    [FormerlySerializedAs("Loot")] [SerializeField] private List<IBuffable> _loot;
+    private readonly List<ILootable> _loot = new();
     
     // Start is called before the first frame update
     void Start()
@@ -31,12 +31,14 @@ public class Chest : MonoBehaviour
                 _animator.SetTrigger("ChestOpen");
                 key.Rigidbody.velocity = new Vector2(0, 0);
                 Destroy(key.gameObject);
+                DropItem();
             }
         }
     }
 
     private void DropItem()
     {
-        
+        var dropped = _loot[Random.Range(0, _loot.Count - 1)];
+        //Какой то метод хз пока что
     }
 }

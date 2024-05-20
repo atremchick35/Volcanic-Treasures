@@ -7,8 +7,10 @@ namespace Buffs
 {
     public class Dirt : MonoBehaviour, IBuffable
     {
-        [FormerlySerializedAs("Slowdown")][SerializeField] private float slowdown;
-        private Movement _player;
+        [FormerlySerializedAs("Slowdown")][SerializeField] 
+        private float slowdown;
+        
+        private Movement _movement;
 
         private void Start()
         {
@@ -20,15 +22,15 @@ namespace Buffs
 
         public void AddBuff(GameObject player)
         {
-            _player = player.GetComponent<Movement>();
-            _player.SetSpeed(slowdown);
-            _player.SetJumpForce(slowdown);
+            _movement = player.GetComponent<Movement>();
+            _movement.SetSpeed(slowdown);
+            _movement.SetJumpForce(slowdown);
         }
 
         public void RemoveBuff()
         {
-            _player.ResetSpeed(slowdown);
-            _player.ResetJumpForce(slowdown);
+            _movement.ResetSpeed(slowdown);
+            _movement.ResetJumpForce(slowdown);
         }
     
         public void OnTriggerEnter2D(Collider2D other)

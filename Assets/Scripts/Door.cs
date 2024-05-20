@@ -1,21 +1,13 @@
 using Player_Scripts;
 using UnityEngine;
 
+//ПОЧТИ ГОТОВЫЙ СКРИПТ!!! (осталось только анимация)
 public class Door : MonoBehaviour
 {
     private Collider2D _collider2D;
     
     // Start is called before the first frame update
-    void Start()
-    {
-        _collider2D = GetComponent<Collider2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    void Start() => _collider2D = GetComponent<Collider2D>();
 
     public void OnCollisionEnter2D(Collision2D other)
     {

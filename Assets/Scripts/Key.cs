@@ -1,4 +1,3 @@
-using System;
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
@@ -8,9 +7,13 @@ public class Key : MonoBehaviour, IInteractable
 {
     private bool _active;
     private Transform _player;
-    [NonSerialized] public Rigidbody2D Rigidbody;
-    [FormerlySerializedAs("Epsilon")] [SerializeField] private double epsilon;
-    [FormerlySerializedAs("Speed")] [SerializeField] private float speed;
+    public Rigidbody2D Rigidbody { get; private set; }
+
+    [FormerlySerializedAs("Epsilon")] [SerializeField] 
+    private double epsilon;
+    
+    [FormerlySerializedAs("Speed")] [SerializeField] 
+    private float speed;
 
     // Start is called before the first frame update
     void Start()
