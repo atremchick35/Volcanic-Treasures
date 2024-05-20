@@ -1,4 +1,3 @@
-using System;
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
@@ -8,9 +7,13 @@ public class Key : MonoBehaviour, IInteractable
 {
     private bool _active;
     private Transform _player;
-    [NonSerialized] public Rigidbody2D Rigidbody;
-    [FormerlySerializedAs("Epsilon")] [SerializeField] private double epsilon;
-    [FormerlySerializedAs("Speed")] [SerializeField] private float speed;
+    public Rigidbody2D Rigidbody { get; private set; }
+
+    [FormerlySerializedAs("Epsilon")] [SerializeField] 
+    private double epsilon;
+    
+    [FormerlySerializedAs("Speed")] [SerializeField] 
+    private float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +29,8 @@ public class Key : MonoBehaviour, IInteractable
 
     private void FixedUpdate()
     {
-        if (_active) // Проверяет подобрал ли игрок ключ
+        // Проверяет подобрал ли игрок ключ
+        if (_active)
         {
             var direction = _player.position - transform.position + new Vector3(0, 0.5f);
             if (direction.magnitude >= epsilon)
@@ -36,7 +40,8 @@ public class Key : MonoBehaviour, IInteractable
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.GetComponent<Player>().Key) // Конфликтующий объект - Игрок
+        // Конфликтующий объект - Игрок
+        if (other.CompareTag("Player") && !other.GetComponent<Player>().Key)
         {
             other.GetComponent<Player>().Key = this;
             _active = true;
