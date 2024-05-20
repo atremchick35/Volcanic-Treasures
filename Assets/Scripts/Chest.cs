@@ -1,9 +1,13 @@
+using System.Collections.Generic;
+using Interfaces;
 using Player_Scripts;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Chest : MonoBehaviour
 {
     private Animator _animator;
+    [FormerlySerializedAs("Loot")] [SerializeField] private List<IBuffable> _loot;
     
     // Start is called before the first frame update
     void Start()

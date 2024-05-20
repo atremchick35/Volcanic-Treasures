@@ -1,16 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using Interfaces;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Boulder : MonoBehaviour, IInteractable
+public class Boulder : MonoBehaviour, ITrapable
 {
     [FormerlySerializedAs("GravityForce")] [SerializeField] private float gravityForce;
+    [FormerlySerializedAs("Life span")] [SerializeField] private float time;
+
+    private Rigidbody2D _rigidbody;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -23,8 +25,10 @@ public class Boulder : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            gameObject.GetComponent<Rigidbody2D>().gravityScale = gravityForce;
-            Destroy(gameObject, 20f);
+            _rigidbody.gravityScale = gravityForce;
+            Destroy(gameObject, time);
         }
     }
+
+    public void KillPlayer(){}
 }

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,15 +10,20 @@ namespace Player_Scripts
         private bool _isContact;
         private bool _isLadder;
 
-        [FormerlySerializedAs("Speed")] [SerializeField] private float speed;
-        [FormerlySerializedAs("Jump Force")] [SerializeField] private float jumpForce;
-        [FormerlySerializedAs("Climb Speed")] [SerializeField] public float climbSpeed;
+        [FormerlySerializedAs("Speed")] [SerializeField]
+        private float speed;
+
+        [FormerlySerializedAs("Jump Force")] [SerializeField]
+        private float jumpForce;
+
+        [FormerlySerializedAs("Climb Speed")] [SerializeField]
+        public float climbSpeed;
 
         public void SetSpeed(float acceleration) => speed *= acceleration;
         public void ResetSpeed(float acceleration) => speed /= acceleration;
         public void SetJumpForce(float acceleration) => jumpForce *= acceleration;
         public void ResetJumpForce(float acceleration) => jumpForce /= acceleration;
-        
+
         // Start is called before the first frame update
         void Start()
         {
@@ -35,6 +39,7 @@ namespace Player_Scripts
                 _rigidbody.velocity = new Vector2(0, climbSpeed);
                 _rigidbody.velocity.Normalize();
             }
+
             // Вертикальное управление (Spacebar)
             if (Input.GetButton("Jump") && _isContact)
             {
@@ -54,7 +59,7 @@ namespace Player_Scripts
 
         //Проверка на сопрекосновение с полом
         private void OnCollisionEnter2D() => _isContact = true;
-        
+
         //Проверка на нахождение на лестнице
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -67,6 +72,5 @@ namespace Player_Scripts
             if (other.CompareTag("Ladder"))
                 _isLadder = false;
         }
-        
     }
 }
