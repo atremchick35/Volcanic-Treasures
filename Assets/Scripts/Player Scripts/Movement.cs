@@ -54,7 +54,8 @@ namespace Player_Scripts
 
         //Проверка на сопрекосновение с полом
         private void OnCollisionEnter2D() => _isContact = true;
-
+        
+        //Проверка на нахождение на лестнице
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Ladder"))

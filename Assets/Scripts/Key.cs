@@ -26,7 +26,8 @@ public class Key : MonoBehaviour, IInteractable
 
     private void FixedUpdate()
     {
-        if (_active) // Проверяет подобрал ли игрок ключ
+        // Проверяет подобрал ли игрок ключ
+        if (_active)
         {
             var direction = _player.position - transform.position + new Vector3(0, 0.5f);
             if (direction.magnitude >= epsilon)
@@ -36,7 +37,8 @@ public class Key : MonoBehaviour, IInteractable
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && !other.GetComponent<Player>().Key) // Конфликтующий объект - Игрок
+        // Конфликтующий объект - Игрок
+        if (other.CompareTag("Player") && !other.GetComponent<Player>().Key)
         {
             other.GetComponent<Player>().Key = this;
             _active = true;
