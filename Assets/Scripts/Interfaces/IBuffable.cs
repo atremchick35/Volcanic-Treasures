@@ -1,36 +1,39 @@
 using Interfaces;
+using Player_Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Interfaces
 {
     public interface IBuffable
     {
-        void AddBuff(GameObject player);
+        void AddBuff();
         void RemoveBuff();
     }
 }
 
 namespace Buffs
 {
-    public abstract class Buff : MonoBehaviour, IBuffable
+    public abstract class LootBuffs : MonoBehaviour, IBuffable, ILootable
     {
-        [FormerlySerializedAs("Using time")] [SerializeField] 
-        private float usingTime;
-        
-        protected bool IsClaimed;
+        private const float UsingTime = 10f;
+        protected Player Player;
+        protected Movement Movement;
 
-        public abstract void AddBuff(GameObject player);
+        private void Awake()
+        {
+            var player = GameObject.FindWithTag("Player");
+            Player = player.GetComponent<Player>();
+            Movement = player.GetComponent<Movement>();
+        }
+
+        public abstract void AddBuff();
 
         public abstract void RemoveBuff();
-        
-        public void OnTriggerEnter2D(Collider2D other)
+
+        public void GivePlayer()
         {
-            if (other.CompareTag("Player") && !IsClaimed)
-            {
-                AddBuff(other.gameObject);
-                Invoke(nameof(RemoveBuff), usingTime);
-            }
+            AddBuff();
+            Invoke(nameof(RemoveBuff), UsingTime);
         }
     }
 }

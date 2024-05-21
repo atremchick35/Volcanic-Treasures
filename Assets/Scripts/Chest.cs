@@ -1,26 +1,34 @@
 using System.Collections.Generic;
+using Buffs;
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class Chest : MonoBehaviour
 {
     private Animator _animator;
-    private readonly List<ILootable> _loot = new();
-    
+    private List<ILootable> _loot;
+
+    // Инициализация списка выпадаемых предметов из сундука
+    private void Awake()
+    {
+        _loot = new()
+        {
+            gameObject.AddComponent<Boots>(),
+            gameObject.AddComponent<Helmet>(),
+            gameObject.AddComponent<LavaRing>(),
+            gameObject.AddComponent<Coin>(),
+            gameObject.AddComponent<Diamond>()
+        };
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _animator = GetComponent<Animator>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -36,9 +44,10 @@ public class Chest : MonoBehaviour
         }
     }
 
+    // Выдать игроку предмет
     private void DropItem()
     {
-        var dropped = _loot[Random.Range(0, _loot.Count - 1)];
-        //Какой то метод хз пока что
+        var dropped = _loot[Random.Range(0, _loot.Count)];
+        dropped.GivePlayer();
     }
 }

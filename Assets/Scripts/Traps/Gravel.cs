@@ -4,22 +4,16 @@ using UnityEngine.Serialization;
 
 namespace Traps
 {
-    public class Gravel : MonoBehaviour, IInteractable
+    public class Gravel : MonoBehaviour, ITrapable
     {
+        [FormerlySerializedAs("Delay")] [SerializeField] private float delay;
+        
         private Collider2D _collider2D;
-    
-        [FormerlySerializedAs("Delay")] [SerializeField] 
-        private float delay;
     
         // Start is called before the first frame update
         void Start()
         {
             _collider2D = GetComponent<Collider2D>();
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
         }
 
         public void OnTriggerEnter2D(Collider2D other)

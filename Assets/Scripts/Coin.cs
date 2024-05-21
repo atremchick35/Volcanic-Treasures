@@ -1,11 +1,8 @@
-using System;
 using Interfaces;
 using Player_Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-public class Coin : MonoBehaviour, IInteractable
+public class Coin : MonoBehaviour, IInteractable, ILootable
 {
     private Player _player;
     private void Start()
@@ -19,11 +16,18 @@ public class Coin : MonoBehaviour, IInteractable
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!gameObject.CompareTag("Chest") && other.CompareTag("Player"))
         {
             _player.AddCoins(1);
             Destroy(gameObject);
             Debug.Log("Coin claimed");
         }
+    }
+
+    public void GivePlayer()
+    {
+        var coin = Random.Range(1, 5);
+        _player.AddCoins(coin);
+        Debug.Log($"Coin from chest claimed : {coin}");
     }
 }

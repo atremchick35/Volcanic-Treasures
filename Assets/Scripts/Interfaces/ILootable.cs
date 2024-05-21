@@ -1,7 +1,7 @@
 namespace Interfaces
 {
-    public class ILootable
+    public interface ILootable
     {
-        
+        void GivePlayer();
     }
 }

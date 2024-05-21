@@ -1,14 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 
-public class Diamond : MonoBehaviour, IInteractable
+public class Diamond : MonoBehaviour, IInteractable, ILootable
 {
+    private Player _player;
     // Start is called before the first frame update
     void Start()
     {
+        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -20,10 +20,15 @@ public class Diamond : MonoBehaviour, IInteractable
     {
         if (other.CompareTag("Player"))
         {
-            var player = other.GetComponent<Player>();
-            player.AddDiamonds(1);
+            _player.AddDiamonds(1);
             Destroy(gameObject);
             Debug.Log("Diamond claimed");
         }
+    }
+
+    public void GivePlayer()
+    {
+        _player.AddDiamonds(1);
+        Debug.Log("Diamond from chest claimed");
     }
 }

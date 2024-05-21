@@ -6,11 +6,8 @@ namespace Traps
 {
     public class Boulder : MonoBehaviour, ITrapable
     {
-        [FormerlySerializedAs("GravityForce")] [SerializeField] 
-        private float gravityForce;
-    
-        [FormerlySerializedAs("Life span")] [SerializeField] 
-        private float time;
+        [FormerlySerializedAs("GravityForce")] [SerializeField] private float gravityForce;
+        [FormerlySerializedAs("Life span")] [SerializeField] private float time;
 
         private Rigidbody2D _rigidbody;
     
@@ -20,12 +17,6 @@ namespace Traps
             _rigidbody = GetComponent<Rigidbody2D>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
-
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
@@ -33,11 +24,6 @@ namespace Traps
                 _rigidbody.gravityScale = gravityForce;
                 Destroy(gameObject, time);
             }
-        }
-
-        public void KillPlayer()
-        {
-        
         }
     }
 }

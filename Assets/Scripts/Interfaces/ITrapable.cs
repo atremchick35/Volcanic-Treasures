@@ -6,7 +6,5 @@ namespace Interfaces
 	public interface ITrapable
 	{
 		void OnTriggerEnter2D(Collider2D other);
-	
-		void KillPlayer();
 	}
 }

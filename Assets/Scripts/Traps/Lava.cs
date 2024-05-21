@@ -1,36 +1,20 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Interfaces;
 using Player_Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Lava : MonoBehaviour, ITrapable
+namespace Traps
 {
-    private Player _player;
-    
-    // Start is called before the first frame update
-    void Start()
+    public class Lava : MonoBehaviour, ITrapable
     {
-        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-    }
+        public void OnTriggerStay2D(Collider2D other)
+        {
+            if (other.CompareTag("Player") && !other.GetComponent<Player>().HasRingLava)
+                other.GetComponent<Player>().Death();
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        public void OnTriggerEnter2D(Collider2D other)
+        {
         
+        }
     }
-
-    public void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.CompareTag("Player") && !_player.HasRingLava)
-            KillPlayer();
-    }
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-    }
-
-    public void KillPlayer() => _player.Death();
 }

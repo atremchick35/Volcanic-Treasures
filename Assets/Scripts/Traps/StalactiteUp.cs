@@ -1,39 +1,38 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 
-public class StalactiteUp : MonoBehaviour, ITrapable
+namespace Traps
 {
-    private Player _player;
-    
-    // Start is called before the first frame update
-    void Start()
+    public class StalactiteUp : MonoBehaviour, ITrapable
     {
-        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-        gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
-    }
+        // Start is called before the first frame update
+        void Start()
+        {
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
+        // Update is called once per frame
+        void Update()
+        {
+        }
 
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-            GetComponent<Rigidbody2D>().gravityScale = 2;
-    }
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+                GetComponent<Rigidbody2D>().gravityScale = 2;
+        }
 
-    private void OnCollisionStay2D(Collision2D other)
-    {
-        if (other.collider.CompareTag("Player") && !_player.HasHelmet)
-            KillPlayer();
-        else
-            Destroy(gameObject, 0.1f);
+        private void OnCollisionStay2D(Collision2D other)
+        {
+            if (other.collider.CompareTag("Player"))
+            {
+                var player = other.gameObject.GetComponent<Player>();
+                if (!player.HasHelmet)
+                    other.gameObject.GetComponent<Player>().Death();
+            }
+            else
+                Destroy(gameObject, 0.1f);
+        }
     }
-
-    public void KillPlayer() => _player.Death();
 }

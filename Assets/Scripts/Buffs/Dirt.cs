@@ -27,6 +27,11 @@ namespace Buffs
             _movement.SetJumpForce(slowdown);
         }
 
+        public void AddBuff()
+        {
+            
+        }
+
         public void RemoveBuff()
         {
             _movement.ResetSpeed(slowdown);
