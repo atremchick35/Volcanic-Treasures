@@ -9,10 +9,10 @@ public class Chest : MonoBehaviour
 {
     private Animator _animator;
     private List<ILootable> _loot;
-
-    // Инициализация списка выпадаемых предметов из сундука
+    
     private void Awake()
     {
+        // Инициализация списка выпадаемых предметов из сундука
         _loot = new()
         {
             gameObject.AddComponent<Boots>(),
@@ -21,18 +21,16 @@ public class Chest : MonoBehaviour
             gameObject.AddComponent<Coin>(),
             gameObject.AddComponent<Diamond>()
         };
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
+        
         _animator = GetComponent<Animator>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Проверка на то, что игрок контактирует с дверью
         if (other.CompareTag("Player"))
         {
+            //Проверка на то, что у игрока есть подходящий ключ
             var key = other.gameObject.GetComponent<Player>().Key;
             if (key && key.CompareTag("ChestKey"))
             {

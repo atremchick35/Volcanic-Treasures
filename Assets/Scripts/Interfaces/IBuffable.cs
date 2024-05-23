@@ -7,6 +7,7 @@ namespace Interfaces
     public interface IBuffable
     {
         void AddBuff();
+        
         void RemoveBuff();
     }
 }

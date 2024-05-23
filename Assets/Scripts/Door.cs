@@ -11,11 +11,11 @@ public class Door : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D other)
     {
-        //Проверка на то, что игрок контактирует с дверью
+        // Проверка на то, что игрок контактирует с дверью
         if (other.collider.CompareTag("Player"))
         {
+            // Проверка на то, что у игрока есть подходящий ключ
             var key = other.gameObject.GetComponent<Player>().Key;
-            //Проверка на то, что у игрока есть подходящий ключ
             if (key && key.CompareTag("DoorKey"))
             {
                 _collider2D.isTrigger = true;

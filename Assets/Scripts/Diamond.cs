@@ -6,19 +6,14 @@ public class Diamond : MonoBehaviour, IInteractable, ILootable
 {
     private Player _player;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         _player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!gameObject.CompareTag("Chest") && other.CompareTag("Player"))
         {
             _player.AddDiamonds(1);
             Destroy(gameObject);
