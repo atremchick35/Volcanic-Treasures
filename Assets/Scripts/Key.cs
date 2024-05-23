@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 public class Key : MonoBehaviour, IInteractable
 {
     private bool _active;
-    private Transform _player;
+    private Player _player;
     public Rigidbody2D Rigidbody { get; private set; }
 
     [FormerlySerializedAs("Epsilon")] [SerializeField] 
@@ -16,10 +16,10 @@ public class Key : MonoBehaviour, IInteractable
     private float speed;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
-        _player = GameObject.FindWithTag("Player").transform;
+        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class Key : MonoBehaviour, IInteractable
         // Проверяет подобрал ли игрок ключ
         if (_active)
         {
-            var direction = _player.position - transform.position + new Vector3(0, 0.5f);
+            var direction = _player.transform.position - transform.position + new Vector3(0, 0.5f);
             if (direction.magnitude >= epsilon)
                 Rigidbody.velocity = new Vector2(direction.x, direction.y) * speed;
         }
@@ -41,9 +41,9 @@ public class Key : MonoBehaviour, IInteractable
     public void OnTriggerEnter2D(Collider2D other)
     {
         // Конфликтующий объект - Игрок
-        if (other.CompareTag("Player") && !other.GetComponent<Player>().Key)
+        if (other.CompareTag("Player") && !_player.Key)
         {
-            other.GetComponent<Player>().Key = this;
+            _player.Key = this;
             _active = true;
         } 
     }
