@@ -1,3 +1,5 @@
+using UnityEngine.UI;
+
 namespace Buffs
 {
     public class Boots : LootBuffs
@@ -7,5 +9,6 @@ namespace Buffs
         public override void AddBuff() => Movement.SetSpeed(Acceleration);
 
         public override void RemoveBuff() => Movement.ResetSpeed(Acceleration);
+        public override Image GetImage() => GetComponent<Image>();
     }
 }

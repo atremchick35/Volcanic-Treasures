@@ -1,3 +1,5 @@
+using UnityEngine.UI;
+
 namespace Buffs
 {
     public class Helmet : LootBuffs
@@ -5,5 +7,7 @@ namespace Buffs
         public override void AddBuff() => Player.HasHelmet = true;
 
         public override void RemoveBuff() => Player.HasHelmet = false;
+        
+        public override Image GetImage() => GetComponent<Image>();
     }
 }

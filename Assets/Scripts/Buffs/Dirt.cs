@@ -2,6 +2,7 @@ using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Buffs
 {
@@ -49,5 +50,7 @@ namespace Buffs
             if (other.CompareTag("Player"))
                 RemoveBuff();
         }
+        
+        public Image GetImage() => GetComponent<Image>();
     }
 }
