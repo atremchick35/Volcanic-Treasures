@@ -6,7 +6,8 @@ namespace Traps
 {
     public class Gravel : MonoBehaviour, ITrapable
     {
-        [FormerlySerializedAs("Delay")] [SerializeField] private float delay;
+        [SerializeField] private float delay;
+        [SerializeField] private Sprite crack;
     
         // Start is called before the first frame update
         void Start()
@@ -20,7 +21,11 @@ namespace Traps
         public void OnCollisionEnter2D(Collision2D other)
         {
             if (other.gameObject.CompareTag("Player"))
+            {
+                foreach (var block in gameObject.GetComponentsInChildren<SpriteRenderer>())
+                    block.sprite = crack;
                 Destroy(gameObject, delay);
+            }
         }
     }
 }

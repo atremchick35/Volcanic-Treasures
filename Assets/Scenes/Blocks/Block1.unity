@@ -156,7 +156,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 7441432753177403357, guid: f4c26e9ea16a4d14eb356cca54bbbd13, type: 3}
   lavaPrefab: {fileID: 3403644083650813233, guid: 4a57487bd3dc0a646a29498f88533ca8, type: 3}
   blockBaseSpeed: 1
-  blockSpeedIncrease: 0.1
+  blockSpeedIncrease: 0.05
   lavaPosition: -20
   lavaOffset: 7
 --- !u!4 &827623864
