@@ -6,13 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="0887b5a4-8e02-4b14-ab8a-5c4d1ab75231" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Volcanic-Treasures/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Volcanic-Treasures/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Layout/ArtemBlockLava.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Layout/ArtemBlockLava.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ExitTrigger.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ExitTrigger.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlockDoors.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlockDoors.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlockEasy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlockEasy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlockSpikes.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlockSpikes.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlock_Naebalovo 1 1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocks/ArtemBlock_Naebalovo 1 1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Player_Idle.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Player_Idle.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Archaeologist Sprite Sheet.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Archaeologist Sprite Sheet.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/PlayerPrefab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/PlayerPrefab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stalagmite.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Stalagmite.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocks/Block1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocks/Block1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Blocks/OlegBlocks/OlegBlock1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Blocks/OlegBlocks/OlegBlock1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Key.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Key.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player Scripts/Movement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Traps/StalactiteUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Traps/StalactiteUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Gold_Key.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Gold_Key.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/cobblestone.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Sprites/cobblestone.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/big-crate.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/big-crate.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/crate.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/crate.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/rock.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/rock.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/sign.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/sign.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/skulls.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/skulls.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/spikes.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SunnyLand Artwork/Environment/props/spikes.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Tilesetter/Palettes/mk_16_16_nature_tileset.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Tilesetter/Palettes/mk_16_16_nature_tileset.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,6 +158,7 @@
       <workItem from="1716463051000" duration="2110000" />
       <workItem from="1716622125455" duration="754000" />
       <workItem from="1716629050411" duration="870000" />
+      <workItem from="1716962053891" duration="2776000" />
     </task>
     <servers />
   </component>
