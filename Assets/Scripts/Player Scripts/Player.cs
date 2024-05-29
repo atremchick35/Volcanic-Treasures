@@ -12,7 +12,7 @@ namespace Player_Scripts
         public bool HasHelmet { get; set; }
         public bool HasRingLava { get; set; }
         public Key Key { get; set; }
-        public Dictionary<Image, float> Effects { get; set; }
+        public Dictionary<Transform, float> Effects { get; set; }
 
         public void AddCoins(int coinsAmount) => Coins += coinsAmount;
         public void AddDiamonds(int diamondsAmount) => Diamonds += diamondsAmount;

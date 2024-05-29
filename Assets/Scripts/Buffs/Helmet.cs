@@ -1,3 +1,4 @@
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Buffs
@@ -8,6 +9,6 @@ namespace Buffs
 
         public override void RemoveBuff() => Player.HasHelmet = false;
         
-        public override Image GetImage() => GetComponent<Image>();
+        public override Transform GetImage() => Canvas.transform.GetChild(0).GetChild(1);
     }
 }

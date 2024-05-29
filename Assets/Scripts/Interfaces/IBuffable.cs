@@ -1,7 +1,5 @@
-using System.Linq;
 using Interfaces;
 using Player_Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +10,6 @@ namespace Interfaces
         void AddBuff();
         
         void RemoveBuff();
-
-        Image GetImage();
     }
 }
 
@@ -24,26 +20,28 @@ namespace Buffs
         private const float UsingTime = 10f;
         protected Player Player;
         protected Movement Movement;
+        protected Canvas Canvas;
+
 
         private void Awake()
         {
             var player = GameObject.FindWithTag("Player");
             Player = player.GetComponent<Player>();
             Movement = player.GetComponent<Movement>();
+            Canvas = GameObject.FindWithTag("Canvas").GetComponent<Canvas>();
         }
 
         public abstract void AddBuff();
-
+        
         public abstract void RemoveBuff();
         
-        public abstract Image GetImage();
-
+        public abstract Transform GetImage();
+        
         public void GivePlayer()
         {
             AddBuff();
-            if (Player.Effects.ContainsKey(GetImage())) // Тут выпадает ошибка NullReference.
-                Player.Effects[GetImage()] = UsingTime; // Скорее всего потому что скрипт(ботинок, колца и т.д.)
-                                                        // вешается на сундук, в котором нет картинки.
+            if (Player.Effects.ContainsKey(GetImage()))
+                Player.Effects[GetImage()] = UsingTime;
             else
                 Player.Effects.Add(GetImage(), UsingTime);
             Debug.Log("Item Given");

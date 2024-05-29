@@ -50,7 +50,5 @@ namespace Buffs
             if (other.CompareTag("Player"))
                 RemoveBuff();
         }
-        
-        public Image GetImage() => GetComponent<Image>();
     }
 }
