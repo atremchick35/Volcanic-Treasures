@@ -19,8 +19,8 @@ public class Chest : MonoBehaviour
             gameObject.AddComponent<Boots>(),
             gameObject.AddComponent<Helmet>(),
             gameObject.AddComponent<LavaRing>(),
-            gameObject.AddComponent<Coin>(),
-            gameObject.AddComponent<Diamond>()
+            // gameObject.AddComponent<Coin>(),
+            // gameObject.AddComponent<Diamond>()
         };
         
         _animator = GetComponent<Animator>();
