@@ -6,6 +6,7 @@ namespace Traps
 {
     public class StalactiteUp : MonoBehaviour, ITrapable
     {
+        [SerializeField] private float gravityScale;
         // Start is called before the first frame update
         void Start()
         {
@@ -20,7 +21,7 @@ namespace Traps
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
-                GetComponent<Rigidbody2D>().gravityScale = 2;
+                GetComponent<Rigidbody2D>().gravityScale = gravityScale;
         }
 
         private void OnCollisionStay2D(Collision2D other)
@@ -31,8 +32,7 @@ namespace Traps
                 if (!player.HasHelmet)
                     other.gameObject.GetComponent<Player>().Death();
             }
-            else
-                Destroy(gameObject, 0.1f);
+            Destroy(gameObject);
         }
     }
 }

@@ -6,22 +6,24 @@ namespace Traps
 {
     public class Gravel : MonoBehaviour, ITrapable
     {
-        [FormerlySerializedAs("Delay")] [SerializeField] private float delay;
-        
-        private Collider2D _collider2D;
+        [SerializeField] private float delay;
+        [SerializeField] private Sprite crack;
     
         // Start is called before the first frame update
         void Start()
         {
-            _collider2D = GetComponent<Collider2D>();
         }
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+        }
+
+        public void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.CompareTag("Player"))
             {
-                Debug.Log("Gravel crumbling");
-                _collider2D.isTrigger = false;
+                foreach (var block in gameObject.GetComponentsInChildren<SpriteRenderer>())
+                    block.sprite = crack;
                 Destroy(gameObject, delay);
             }
         }

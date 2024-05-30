@@ -27,7 +27,7 @@ public class Chest : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Проверка на то, что игрок контактирует с дверью
+        // Проверка на то, что игрок контактирует с сундуком
         if (other.CompareTag("Player"))
         {
             //Проверка на то, что у игрока есть подходящий ключ

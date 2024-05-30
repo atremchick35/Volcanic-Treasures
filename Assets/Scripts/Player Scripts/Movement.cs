@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,6 +8,7 @@ namespace Player_Scripts
     {
         private Animator _animator;
         private Rigidbody2D _rigidbody;
+        private SpriteRenderer _sprite;
         private bool _isContact;
         private bool _isLadder;
 
@@ -25,9 +27,11 @@ namespace Player_Scripts
         public void ResetJumpForce(float acceleration) => jumpForce /= acceleration;
 
         // Start is called before the first frame update
-        void Start()
+        void Awake()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
+            _sprite = GetComponent<SpriteRenderer>();
         }
 
         // Update is called once per frame
@@ -54,9 +58,10 @@ namespace Player_Scripts
             var horizontal = Input.GetAxis("Horizontal");
             _rigidbody.velocity = new Vector2(horizontal * speed, _rigidbody.velocity.y);
             _rigidbody.velocity.Normalize();
-            //_animator.SetFloat("HorizontalMove", Math.Abs(horizontal));
+            _animator.SetFloat("HorizontalMove", Math.Abs(horizontal));
+            _sprite.flipX = horizontal < 0;
         }
-
+        
         //Проверка на сопрекосновение с полом
         private void OnCollisionEnter2D() => _isContact = true;
 
