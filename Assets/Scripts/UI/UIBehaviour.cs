@@ -20,7 +20,6 @@ namespace UI
         [FormerlySerializedAs("StartCoordsX")] [SerializeField] private int pointX;
         [FormerlySerializedAs("StartCoordsY")] [SerializeField] private int pointY;
         
-        
         private Player _player;
         private Dictionary<Transform, float> _buffs;
 
@@ -78,7 +77,7 @@ namespace UI
         void MoveLeft()
         {
             // сдвигает список баффов влево
-            var counter = 1; // ДА, КАСТЫЛЬ БЕ БЕ БЕ
+            var counter = 1;
             foreach (var key in _buffs.Keys)
             {
                 key.position = new Vector3(counter * (150 + key.localScale.x), pointY, key.position.z);

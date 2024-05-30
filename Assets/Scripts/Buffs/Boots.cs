@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Buffs
 {
@@ -10,6 +9,11 @@ namespace Buffs
         public override void AddBuff() => Movement.SetSpeed(Acceleration);
 
         public override void RemoveBuff() => Movement.ResetSpeed(Acceleration);
-        public override Transform GetImage() => Canvas.transform.GetChild(0).GetChild(0);
+
+        public override Transform GetImage()
+        {
+            Debug.Log("Speed accelerated");
+            return Canvas.transform.GetChild(0).GetChild(0);
+        }
     }
 }

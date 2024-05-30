@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Buffs
 {
@@ -8,7 +7,11 @@ namespace Buffs
         public override void AddBuff() => Player.HasRingLava = true;
 
         public override void RemoveBuff() => Player.HasRingLava = false;
-        
-        public override Transform GetImage() => Canvas.transform.GetChild(0).GetChild(2);
+
+        public override Transform GetImage()
+        {
+            Debug.Log("LavaRing weared");
+            return Canvas.transform.GetChild(0).GetChild(2);
+        }
     }
 }

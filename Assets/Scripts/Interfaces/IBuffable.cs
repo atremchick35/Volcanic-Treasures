@@ -1,7 +1,6 @@
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Interfaces
 {
@@ -21,8 +20,7 @@ namespace Buffs
         protected Player Player;
         protected Movement Movement;
         protected Canvas Canvas;
-
-
+        
         private void Awake()
         {
             var player = GameObject.FindWithTag("Player");
@@ -40,10 +38,12 @@ namespace Buffs
         public void GivePlayer()
         {
             AddBuff();
-            if (Player.Effects.ContainsKey(GetImage()))
-                Player.Effects[GetImage()] = UsingTime;
-            else
-                Player.Effects.Add(GetImage(), UsingTime);
+            var image = GetImage();
+            // if (Player.Effects.ContainsKey(image))
+            //     Player.Effects[image] = UsingTime;
+            // else
+            //     Player.Effects.Add(image, UsingTime);
+            Player.Effects[image] = UsingTime;
             Debug.Log("Item Given");
             Invoke(nameof(RemoveBuff), UsingTime);
         }
