@@ -1,5 +1,6 @@
 namespace Buffs
 {
+    // Реализация "защиты"
     public class LavaRing : LootBuffs
     {
         public override void AddBuff() => Player.HasRingLava = true;

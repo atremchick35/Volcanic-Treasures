@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Interfaces
 {
+    // Данный интерфейс задаёт "правила" всем существующим эффектам
     public interface IBuffable
     {
         void AddBuff();
@@ -14,6 +15,7 @@ namespace Interfaces
 
 namespace Buffs
 {
+    // Данный класс отвечает за все эффекты игрока, которые можно подобрать из сундука
     public abstract class LootBuffs : MonoBehaviour, IBuffable, ILootable
     {
         private const float UsingTime = 10f;

@@ -9,7 +9,8 @@ public class Chest : MonoBehaviour
 {
     private Animator _animator;
     private List<ILootable> _loot;
-    
+    private static readonly int ChestOpen = Animator.StringToHash("ChestOpen");
+
     private void Awake()
     {
         // Инициализация списка выпадаемых предметов из сундука
@@ -34,7 +35,7 @@ public class Chest : MonoBehaviour
             var key = other.gameObject.GetComponent<Player>().Key;
             if (key && key.CompareTag("ChestKey"))
             {
-                _animator.SetTrigger("ChestOpen");
+                _animator.SetTrigger(ChestOpen);
                 key.Rigidbody.velocity = new Vector2(0, 0);
                 Destroy(key.gameObject);
                 DropItem();

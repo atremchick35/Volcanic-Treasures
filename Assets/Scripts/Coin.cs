@@ -5,14 +5,8 @@ using UnityEngine;
 public class Coin : MonoBehaviour, IInteractable, ILootable
 {
     private Player _player;
-    private void Start()
-    {
-        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-    }
-
-    private void Update()
-    {
-    }
+    
+    private void Awake() => _player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
     public void OnTriggerEnter2D(Collider2D other)
     {

@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 439819538383521738, guid: 1776012a2ec839d419e8dcb57db2c9e4, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[0].second.m_AnimationSpeed
-      value: 5.0000005
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 439819538383521738, guid: 1776012a2ec839d419e8dcb57db2c9e4, type: 3}
       propertyPath: m_AnimatedTiles.Array.data[2].second.m_AnimationSpeed
@@ -361,6 +361,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3288133734373845031, guid: f4c26e9ea16a4d14eb356cca54bbbd13, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288133734373845031, guid: f4c26e9ea16a4d14eb356cca54bbbd13, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288133734373845031, guid: f4c26e9ea16a4d14eb356cca54bbbd13, type: 3}
+      propertyPath: m_SleepingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288133734373845031, guid: f4c26e9ea16a4d14eb356cca54bbbd13, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3716964000087591955, guid: f4c26e9ea16a4d14eb356cca54bbbd13, type: 3}
       propertyPath: m_LocalPosition.x
       value: -17.02

@@ -4,14 +4,12 @@ namespace Block_Scripts
 {
     public class BlockGeneration : MonoBehaviour
     {
-        [SerializeField] private float blockSize;
         private GameObject[] _blocks;
         private bool _hasSpawned;
-
-        private void Awake()
-        {
-            _blocks = Resources.LoadAll<GameObject>("Blocks");
-        }
+        
+        [SerializeField] private float blockSize;
+        
+        private void Awake() => _blocks = Resources.LoadAll<GameObject>("Blocks");
 
         private void OnTriggerEnter2D(Collider2D other)
         {

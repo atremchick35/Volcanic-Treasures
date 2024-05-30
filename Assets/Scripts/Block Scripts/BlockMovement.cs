@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Block_Scripts
@@ -10,12 +9,13 @@ namespace Block_Scripts
         public float BlockSpeedInc { get; set; } // (m / s^2)
         public float BlockBaseSpeed { get; set; }
         public float LavaPosition { get; set; }
+        
         private Transform _transform;
 
         private void Awake() => _transform = gameObject.GetComponent<Transform>();
 
         // Update is called once per frame  
-        void Update()
+        private void Update()
         {
             // Получить текущую скорость лавы
             var blockSpeed = BlockBaseSpeed + Time.timeSinceLevelLoad * BlockSpeedInc;
@@ -25,9 +25,8 @@ namespace Block_Scripts
             position = new Vector3(position.x, position.y - (blockSpeed * Time.deltaTime), position.z);
             _transform.position = position;
             
-            if (_transform.position.y < LavaPosition) {
+            if (_transform.position.y < LavaPosition)
                 Destroy(gameObject);
-            }
         }
     }
 }

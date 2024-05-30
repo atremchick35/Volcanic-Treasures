@@ -1,26 +1,16 @@
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Buffs
 {
+    // Скрипт описывает логику эффекта (объекта) "Dirt"
     public class Dirt : MonoBehaviour, IBuffable
     {
-        [FormerlySerializedAs("Slowdown")][SerializeField] 
-        private float slowdown;
-        
+        [SerializeField] private float slowdown;
         private Movement _movement;
 
-        private void Start()
-        {
-        }
-
-        private void Update()
-        {
-        }
-
-        public void AddBuff(GameObject player)
+        private void AddBuff(GameObject player)
         {
             _movement = player.GetComponent<Movement>();
             _movement.SetSpeed(slowdown);
@@ -29,7 +19,7 @@ namespace Buffs
 
         public void AddBuff()
         {
-            
+            // Не реализует
         }
 
         public void RemoveBuff()

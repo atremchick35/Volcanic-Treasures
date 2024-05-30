@@ -1,81 +1,71 @@
 using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Player_Scripts
 {
+    // Данный скрипт висит на игроке и отвечает за управление им
     public class Movement : MonoBehaviour
     {
-        private Animator _animator;
-        private Rigidbody2D _rigidbody;
-        private SpriteRenderer _sprite;
-        private bool _isContact;
+        
         private bool _isLadder;
+        private static readonly int HorizontalMove = Animator.StringToHash("HorizontalMove");
 
-        [FormerlySerializedAs("Speed")] [SerializeField]
-        private float speed;
-
-        [FormerlySerializedAs("Jump Force")] [SerializeField]
-        private float jumpForce;
-
-        [FormerlySerializedAs("Climb Speed")] [SerializeField]
-        public float climbSpeed;
+        [SerializeField] private Rigidbody2D rb;
+        [SerializeField] private Animator animator;
+        [SerializeField] private SpriteRenderer sprite;
+        
+        [SerializeField] private Transform groundCheck;
+        [SerializeField] private Transform ladderCheck;
+        
+        [SerializeField] private LayerMask slopeLayer;
+        [SerializeField] private LayerMask groundLayer;
+        [SerializeField] private LayerMask ladderLayer;
+        
+        [SerializeField] private float speed;
+        [SerializeField] private float jumpForce;
+        [SerializeField] public float climbSpeed;
 
         public void SetSpeed(float acceleration) => speed *= acceleration;
+        
         public void ResetSpeed(float acceleration) => speed /= acceleration;
+        
         public void SetJumpForce(float acceleration) => jumpForce *= acceleration;
+        
         public void ResetJumpForce(float acceleration) => jumpForce /= acceleration;
-
-        // Start is called before the first frame update
-        void Awake()
-        {
-            _rigidbody = GetComponent<Rigidbody2D>();
-            _animator = GetComponent<Animator>();
-            _sprite = GetComponent<SpriteRenderer>();
-        }
-
-        // Update is called once per frame
-        void Update()
+        
+        private void Update()
         {
             // Подъём по лестнице (Зажим Spacebar)
-            if (Input.GetButton("Jump") && _isLadder)
-            {
-                _rigidbody.velocity = new Vector2(0, climbSpeed);
-                _rigidbody.velocity.Normalize();
-            }
+            if (Input.GetButton("Jump") && IsOnLadder())
+                rb.velocity = new Vector2(0, climbSpeed);
 
-            // Вертикальное управление (Spacebar)
-            if (Input.GetButton("Jump") && _isContact)
-            {
-                _rigidbody.AddForce(new Vector2(0, jumpForce));
-                _isContact = false;
-            }
+            // Прыжок (Разовое нажатие Spacebar)
+            if (Input.GetButton("Jump") && (IsGrounded() || IsOnSlope()))
+                rb.AddForce(new Vector2(0, jumpForce));
+            
+            // Огроничитель скорости на лестнице и наклонной поверхности
+            if ((IsOnLadder() || IsOnSlope()) && rb.velocity.magnitude > speed)
+                rb.velocity = rb.velocity.normalized * speed;
         }
 
         private void FixedUpdate()
         {
             // Горизонтальное управление (A / D)
             var horizontal = Input.GetAxis("Horizontal");
-            _rigidbody.velocity = new Vector2(horizontal * speed, _rigidbody.velocity.y);
-            _rigidbody.velocity.Normalize();
-            _animator.SetFloat("HorizontalMove", Math.Abs(horizontal));
-            _sprite.flipX = horizontal < 0;
+            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            
+            // Анимация движения при беге
+            animator.SetFloat(HorizontalMove, Math.Abs(horizontal));
+            sprite.flipX = horizontal < 0;
         }
         
-        //Проверка на сопрекосновение с полом
-        private void OnCollisionEnter2D() => _isContact = true;
+        // Проверка на сопрекосновение с полом
+        private bool IsGrounded() => Physics2D.OverlapCircle(groundCheck.position, 0.4f, groundLayer);
 
-        //Проверка на нахождение на лестнице
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Ladder"))
-                _isLadder = true;
-        }
-
-        private void OnTriggerExit2D(Collider2D other)
-        {
-            if (other.CompareTag("Ladder"))
-                _isLadder = false;
-        }
+        // Проверка на нахождение на лестнице
+        private bool IsOnLadder() => Physics2D.OverlapCircle(ladderCheck.position, 0.3f, ladderLayer);
+        
+        // Проверка на нахождение на наклонной поверхности
+        private bool IsOnSlope() => Physics2D.OverlapCircle(groundCheck.position, 0.4f, slopeLayer);
     }
 }

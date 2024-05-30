@@ -6,10 +6,7 @@ public class Diamond : MonoBehaviour, IInteractable, ILootable
 {
     private Player _player;
     
-    private void Awake()
-    {
-        _player = GameObject.FindWithTag("Player").GetComponent<Player>();
-    }
+    private void Awake() => _player = GameObject.FindWithTag("Player").GetComponent<Player>();
 
     public void OnTriggerEnter2D(Collider2D other)
     {

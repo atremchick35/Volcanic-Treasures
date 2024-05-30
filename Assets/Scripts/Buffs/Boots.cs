@@ -1,5 +1,6 @@
 namespace Buffs
 {
+    // Реализация "ботинок"
     public class Boots : LootBuffs
     {
         private const float Acceleration = 1.6f;

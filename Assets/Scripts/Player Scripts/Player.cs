@@ -16,15 +16,5 @@ namespace Player_Scripts
         public void AddCoins(int coinsAmount) => Coins += coinsAmount;
         public void AddDiamonds(int diamondsAmount) => Diamonds += diamondsAmount;
         public void Death() => Destroy(gameObject);
-    
-        // Start is called before the first frame update
-        void Start()
-        {
-        }
-        
-        // Update is called once per frame
-        void Update()
-        {
-        }
     }
 }
