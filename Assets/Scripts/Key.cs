@@ -1,35 +1,26 @@
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Key : MonoBehaviour, IInteractable
 {
+    public Rigidbody2D Rigidbody { get; private set; }
+    
     private bool _active;
     private Player _player;
-    public Rigidbody2D Rigidbody { get; private set; }
 
-    [FormerlySerializedAs("Epsilon")] [SerializeField] 
-    private double epsilon;
+    [SerializeField] private double epsilon;
+    [SerializeField] private float speed;
     
-    [FormerlySerializedAs("Speed")] [SerializeField] 
-    private float speed;
-
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         Rigidbody = GetComponent<Rigidbody2D>();
         _player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     private void FixedUpdate()
     {
-        // Проверяет подобрал ли игрок ключ
+        // Проверяет подобрал ли игрок ключ, а затем заставляет ключ двигаться за игроком
         if (_active)
         {
             var direction = _player.transform.position - transform.position + new Vector3(0, 1f);
@@ -40,7 +31,7 @@ public class Key : MonoBehaviour, IInteractable
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        // Конфликтующий объект - Игрок
+        // Если контактирующий объект игрок
         if (other.CompareTag("Player") && !_player.Key)
         {
             _player.Key = this;

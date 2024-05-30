@@ -1,15 +1,19 @@
 using Player_Scripts;
 using UnityEngine;
 
-//ПОЧТИ ГОТОВЫЙ СКРИПТ!!! (осталось только анимация)
+// Данный скрипт весит на оюъекте "Door" и позволяет производить манипуляции с нею
 public class Door : MonoBehaviour
 {
     private Collider2D _collider2D;
+    private Animator _animator;
     
-    // Start is called before the first frame update
-    void Start() => _collider2D = GetComponent<Collider2D>();
+    private void Awake()
+    { 
+        _collider2D = GetComponent<Collider2D>();
+        _animator = GetComponent<Animator>();
+    }
 
-    public void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         // Проверка на то, что игрок контактирует с дверью
         if (other.collider.CompareTag("Player"))
@@ -18,10 +22,13 @@ public class Door : MonoBehaviour
             var key = other.gameObject.GetComponent<Player>().Key;
             if (key && key.CompareTag("DoorKey"))
             {
-                _collider2D.isTrigger = true;
                 key.Rigidbody.velocity = new Vector2(0, 0);
+                _animator.Play("door_open");
                 Destroy(key.gameObject);
+                Invoke(nameof(ChangeTriggerState), 0.8f);
             }
         }
     }
+    
+    private void ChangeTriggerState() => _collider2D.isTrigger = true;
 }
