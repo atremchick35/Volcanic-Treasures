@@ -5,8 +5,8 @@ using UnityEngine;
 public class Diamond : MonoBehaviour, IInteractable, ILootable
 {
     private Player _player;
-    // Start is called before the first frame update
-    void Awake()
+    
+    private void Awake()
     {
         _player = GameObject.FindWithTag("Player").GetComponent<Player>();
     }

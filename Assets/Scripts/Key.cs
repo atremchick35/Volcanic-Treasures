@@ -2,6 +2,7 @@ using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 
+// Данный скрипт весит на "Ключах" и позволяет открывать сундуки и двери с помощью них
 public class Key : MonoBehaviour, IInteractable
 {
     public Rigidbody2D Rigidbody { get; private set; }
