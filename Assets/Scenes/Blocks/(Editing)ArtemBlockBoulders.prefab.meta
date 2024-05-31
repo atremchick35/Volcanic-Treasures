@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Blocks/(Editing)ArtemBlockBoulders.prefab.meta
 guid: 2f01d88300fa039418a344a1d960bf4f
 PrefabImporter:
+========
+guid: 0695d840dc2a593418f3c0eb8646b630
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> Artem_branch:Assets/Sprites/Background.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/column.prefab.meta
 guid: 45936d7b7f837e74a9bc88a42f4c26a4
 PrefabImporter:
+========
+guid: be5ba4e6a425e734bac6e605b0a27694
+DefaultImporter:
+>>>>>>>> Artem_branch:Assets/Scenes/Blocks/Menu.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
