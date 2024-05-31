@@ -5,10 +5,10 @@ namespace Buffs
     // Реализация "защиты"
     public class LavaRing : LootBuffs
     {
-        public override void AddBuff() => Player.HasRingLava = true;
+        protected override void AddBuff() => Player.HasRingLava = true;
 
-        public override void RemoveBuff() => Player.HasRingLava = false;
+        protected override void RemoveBuff() => Player.HasRingLava = false;
         
-        public override Transform GetImage() => Canvas.transform.GetChild(0).GetChild(2);
+        protected override Transform GetImage() => Canvas.transform.GetChild(0).GetChild(2);
     }
 }

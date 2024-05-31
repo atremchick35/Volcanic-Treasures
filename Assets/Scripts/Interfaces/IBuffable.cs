@@ -16,24 +16,30 @@ namespace Interfaces
 namespace Buffs
 {
     // Данный класс отвечает за все эффекты игрока, которые можно подобрать из сундука
-    public abstract class LootBuffs : MonoBehaviour, IBuffable, ILootable
+    public abstract class LootBuffs : MonoBehaviour, ILootable
     {
         private const float UsingTime = 10f;
         protected Player Player;
         protected Movement Movement;
         protected Canvas Canvas;
 
+        private const string CanvasTag = "Canvas";
+        private const string PlayerTag = "Player";
+
 
         private void Awake()
         {
-            var player = GameObject.FindWithTag("Player");
+            var player = GameObject.FindWithTag(PlayerTag);
+            Canvas = GameObject.FindWithTag(CanvasTag).GetComponent<Canvas>();
             Player = player.GetComponent<Player>();
             Movement = player.GetComponent<Movement>();
         }
 
-        public abstract void AddBuff();
+        protected abstract void AddBuff();
 
-        public abstract void RemoveBuff();
+        protected abstract void RemoveBuff();
+        
+        protected abstract Transform GetImage();
 
         public void GivePlayer()
         {
