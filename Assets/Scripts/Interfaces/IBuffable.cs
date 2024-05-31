@@ -42,10 +42,12 @@ namespace Buffs
         public void GivePlayer()
         {
             AddBuff();
+            
             if (Player.Effects.ContainsKey(GetImage()))
                 Player.Effects[GetImage()] = UsingTime;
             else
                 Player.Effects.Add(GetImage(), UsingTime);
+            
             Debug.Log("Item Given");
             Invoke(nameof(RemoveBuff), UsingTime);
         }

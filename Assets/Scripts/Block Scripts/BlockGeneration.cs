@@ -2,6 +2,17 @@ using UnityEngine;
 
 namespace Block_Scripts
 {
+    public abstract class Generation : MonoBehaviour
+    {
+        private void CreateBlock(GameObject randomBlock, Vector3 pos)
+        {
+            var block = Instantiate(randomBlock, pos, Quaternion.identity);
+            var movement = block.AddComponent<BlockMovement>();
+            movement.BlockBaseSpeed = blockBaseSpeed;
+            movement.BlockSpeedInc = blockSpeedIncrease;
+            movement.LavaPosition = lavaPosition;
+        }
+    }
     public class BlockGeneration : MonoBehaviour
     {
         private GameObject[] _blocks;
@@ -17,8 +28,7 @@ namespace Block_Scripts
             {
                 _hasSpawned = true;
 
-                var newBlock = Instantiate(_blocks[Random.Range(0, _blocks.Length)],
-                    new Vector3(0, gameObject.transform.position.y + blockSize, 0), Quaternion.identity);
+                var newBlock = Instantiate(_blocks[Random.Range(0, _blocks.Length)], new Vector3(0, gameObject.transform.position.y + blockSize, 0), Quaternion.identity);
                 var movement = newBlock.AddComponent<BlockMovement>();
                 var thisMovement = gameObject.GetComponentInParent<BlockMovement>();
                 
