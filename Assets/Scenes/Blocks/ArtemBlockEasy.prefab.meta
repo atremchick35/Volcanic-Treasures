@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Blocks/ArtemBlockEasy.prefab.meta
 guid: b844b1f207477ee41920c5b289657a41
 PrefabImporter:
+========
+guid: 0695d840dc2a593418f3c0eb8646b630
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> Artem_branch:Assets/Sprites/Background.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
