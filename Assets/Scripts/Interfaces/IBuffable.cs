@@ -1,7 +1,6 @@
 using Interfaces;
 using Player_Scripts;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Interfaces
 {
@@ -22,11 +21,8 @@ namespace Buffs
         private const float UsingTime = 10f;
         protected Player Player;
         protected Movement Movement;
-<<<<<<< HEAD
-=======
         protected Canvas Canvas;
 
->>>>>>> parent of 7856ced (Add_Menu_Pause)
 
         private void Awake()
         {
@@ -42,14 +38,13 @@ namespace Buffs
         public void GivePlayer()
         {
             AddBuff();
-<<<<<<< HEAD
-=======
+
             if (Player.Effects.ContainsKey(GetImage()))
                 Player.Effects[GetImage()] = UsingTime;
             else
                 Player.Effects.Add(GetImage(), UsingTime);
             Debug.Log("Item Given");
->>>>>>> parent of 7856ced (Add_Menu_Pause)
+
             Invoke(nameof(RemoveBuff), UsingTime);
         }
     }
