@@ -8,9 +8,9 @@ namespace Block_Scripts
         {
             var block = Instantiate(randomBlock, pos, Quaternion.identity);
             var movement = block.AddComponent<BlockMovement>();
-            /*movement.BlockBaseSpeed = blockBaseSpeed;
+            movement.BlockBaseSpeed = blockBaseSpeed;
             movement.BlockSpeedInc = blockSpeedIncrease;
-            movement.LavaPosition = lavaPosition;*/
+            movement.LavaPosition = lavaPosition;
         }
     }
     public class BlockGeneration : MonoBehaviour

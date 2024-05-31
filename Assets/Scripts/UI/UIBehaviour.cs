@@ -13,9 +13,9 @@ namespace UI
         // надо определиться с тем, как считать высоту, пройденную игроком
         // например, зная скорость движения каждого блока вниз, с той же частотой прибавлять 1 к высоте
         // округлять до целочисленных
-        [FormerlySerializedAs("CoinsText")] [SerializeField] private TMP_Text coinsText;
-        [FormerlySerializedAs("DiamondsText")] [SerializeField] private TMP_Text diamondsText;
-        [FormerlySerializedAs("DistanceText")] [SerializeField] private TMP_Text distanceText;
+        [SerializeField] private TMP_Text coinsText;
+        [SerializeField] private TMP_Text diamondsText;
+        [SerializeField] private TMP_Text distanceText;
 
         [FormerlySerializedAs("StartCoordsX")] [SerializeField] private int pointX;
         [FormerlySerializedAs("StartCoordsY")] [SerializeField] private int pointY;
@@ -24,23 +24,24 @@ namespace UI
         private Dictionary<Transform, float> _buffs;
 
         private const float MaxDelay = 10f;
+        private const int Shift = 1;
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             _player = GameObject.FindWithTag("Player").GetComponent<Player>();
             _buffs = _player.Effects;
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             coinsText.text = _player.Coins.ToString();
             diamondsText.text = _player.Diamonds.ToString();
             CheckDelay();
         }
 
-        void CheckDelay()
+        private void CheckDelay()
         {
             foreach (var key in _buffs
                          .OrderBy(x => x.Value)
@@ -51,6 +52,7 @@ namespace UI
                 AddBuffToCanvas(key);
                 _buffs[key] -= Time.deltaTime;
                 // Debug.Log($"{_buffs[key]}");
+                
                 if (_buffs[key] < 0)
                 {
                     _buffs.Remove(key);
@@ -58,12 +60,13 @@ namespace UI
                     MoveLeft();
                     continue;
                 }
+                
                 var imageState = _buffs[key] / MaxDelay;
                 key.GetChild(1).GetComponent<Image>().fillAmount = imageState;
             }
         }
 
-        void AddBuffToCanvas(Transform key)
+        private void AddBuffToCanvas(Transform key)
         {
             // добавляет новый бафф справа
             // проверять на наличие баффа в канвасе
@@ -74,10 +77,10 @@ namespace UI
             }
         }
 
-        void MoveLeft()
+        private void MoveLeft()
         {
             // сдвигает список баффов влево
-            var counter = 1;
+            var counter = Shift;
             foreach (var key in _buffs.Keys)
             {
                 key.position = new Vector3(counter * (150 + key.localScale.x), pointY, key.position.z);
