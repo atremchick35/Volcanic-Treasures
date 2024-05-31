@@ -24,7 +24,8 @@ namespace UI
         private Player _player;
         private Dictionary<Transform, float> _buffs;
 
-        private const float MaxDelay = 10f;
+        private const float MaxDelay = 10;
+        private const int Shift = 1;
 
         // Start is called before the first frame update
         void Start()
@@ -78,12 +79,9 @@ namespace UI
         void MoveLeft()
         {
             // сдвигает список баффов влево
-            var counter = 1; // ДА, КАСТЫЛЬ БЕ БЕ БЕ
+            var counter = Shift; // ДА, КАСТЫЛЬ БЕ БЕ БЕ
             foreach (var key in _buffs.Keys)
-            {
-                key.position = new Vector3(counter * (150 + key.localScale.x), pointY, key.position.z);
-                counter++;
-            }
+                key.position = new Vector3(counter++ * (150 + key.localScale.x), pointY, key.position.z);
         }
     }
 }
