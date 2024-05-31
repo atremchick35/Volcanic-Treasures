@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Blocks/ArtemBlockDoors.prefab.meta
 guid: d9671a136605ffc46b63f47798c626b7
 PrefabImporter:
+========
+guid: be5ba4e6a425e734bac6e605b0a27694
+DefaultImporter:
+>>>>>>>> Artem_branch:Assets/Scenes/Blocks/Menu.unity.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
