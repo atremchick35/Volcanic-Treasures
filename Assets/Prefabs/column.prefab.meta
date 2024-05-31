@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/column.prefab.meta
 guid: 45936d7b7f837e74a9bc88a42f4c26a4
+========
+guid: 6c2f494698a0b8f46a5e97b23754fe94
+>>>>>>>> parent of 7856ced (Add_Menu_Pause):Assets/Scenes/Blocks/GoGaBlock1.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

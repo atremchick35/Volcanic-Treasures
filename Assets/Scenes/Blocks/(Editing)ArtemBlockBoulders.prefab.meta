@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Blocks/(Editing)ArtemBlockBoulders.prefab.meta
 guid: 2f01d88300fa039418a344a1d960bf4f
+========
+guid: a5dd45880e198d542b8edfaac1a7fac7
+>>>>>>>> parent of 7856ced (Add_Menu_Pause):Assets/Scenes/Blocks/GoGaBlock2.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
