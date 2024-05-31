@@ -42,11 +42,7 @@ namespace UI
 
         void CheckDelay()
         {
-            foreach (var key in _buffs
-                         .OrderBy(x => x.Value)
-                         .ToDictionary(x => x.Key, x => x.Value)
-                         .Keys
-                         .ToList())
+            foreach (var key in _buffs.Keys.ToList())
             {
                 AddBuffToCanvas(key);
                 _buffs[key] -= Time.deltaTime;
@@ -77,11 +73,11 @@ namespace UI
         void MoveLeft()
         {
             // сдвигает список баффов влево
-            var counter = 1;
+            var shiftPosition = 1;
             foreach (var key in _buffs.Keys)
             {
-                key.position = new Vector3(counter * (150 + key.localScale.x), pointY, key.position.z);
-                counter++;
+                key.position = new Vector3(shiftPosition * (150 + key.localScale.x), pointY, key.position.z);
+                shiftPosition++;
             }
         }
     }
