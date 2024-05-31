@@ -76,14 +76,20 @@ Transform:
   - {fileID: 450711969217637918}
   - {fileID: 5701262581277993937}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 5429647274023671254}
 =======
+=======
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
   - {fileID: 6988026035982816511}
   - {fileID: 5429647274023671254}
   - {fileID: 1506120115899078207}
   - {fileID: 2556718968792980846}
   - {fileID: 7708577187416871078}
   - {fileID: 2859080364367848499}
+<<<<<<< HEAD
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
+=======
 >>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
   - {fileID: 4166784216172206981}
   - {fileID: 2384833111133237200}
@@ -2021,7 +2027,10 @@ Transform:
   m_PrefabInstance: {fileID: 1636874135686520664}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &1660868449135902574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2084,6 +2093,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8644346853439695761, guid: b948c1044eb501b43ad0eac5ea02f220, type: 3}
   m_PrefabInstance: {fileID: 1660868449135902574}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
+=======
 >>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &1843370627793415786
 PrefabInstance:
@@ -2210,7 +2222,10 @@ Transform:
   m_PrefabInstance: {fileID: 1846963558479205335}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &2093256515818388279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2273,6 +2288,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8644346853439695761, guid: b948c1044eb501b43ad0eac5ea02f220, type: 3}
   m_PrefabInstance: {fileID: 2093256515818388279}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
+=======
 >>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &2103653030082617686
 PrefabInstance:
@@ -3581,7 +3599,10 @@ Transform:
   m_PrefabInstance: {fileID: 5735639703999329577}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &5790395299721203618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3644,6 +3665,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8644346853439695761, guid: b948c1044eb501b43ad0eac5ea02f220, type: 3}
   m_PrefabInstance: {fileID: 5790395299721203618}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
+=======
 >>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &5936177883383391200
 PrefabInstance:
@@ -3832,7 +3856,10 @@ Transform:
   m_PrefabInstance: {fileID: 5992694155654739281}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &6092712732042295039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3895,6 +3922,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8644346853439695761, guid: b948c1044eb501b43ad0eac5ea02f220, type: 3}
   m_PrefabInstance: {fileID: 6092712732042295039}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
+=======
 >>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &6468888616642400631
 PrefabInstance:
@@ -4231,7 +4261,10 @@ Transform:
   m_PrefabInstance: {fileID: 7114258382960664267}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &7138262506068639150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4294,6 +4327,9 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8644346853439695761, guid: b948c1044eb501b43ad0eac5ea02f220, type: 3}
   m_PrefabInstance: {fileID: 7138262506068639150}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+>>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
+=======
 >>>>>>> parent of ab52dba (Merge branch 'Artem_branch' into korjeeek_Branch)
 --- !u!1001 &7282546201303100051
 PrefabInstance:
