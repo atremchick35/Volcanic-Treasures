@@ -1,42 +1,37 @@
-using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 
 namespace Buffs
 {
     // Скрипт описывает логику эффекта (объекта) "Dirt"
-    public class Dirt : MonoBehaviour, IBuffable
+    public class Dirt : Buffs
     {
-        [SerializeField] private float slowdown;
+        [SerializeField] private GameObject player;
+        
         private Movement _movement;
 
-        private void AddBuff(GameObject player)
+        protected override void AddBuff()
         {
             _movement = player.GetComponent<Movement>();
-            _movement.SetSpeed(slowdown);
-            _movement.SetJumpForce(slowdown);
+            _movement.SetSpeed(Fields.Buffs.DirtSlowdown);
+            _movement.SetJumpForce(Fields.Buffs.DirtSlowdown);
         }
 
-        public void AddBuff()
+        protected override void RemoveBuff()
         {
-            // Не реализует
-        }
-
-        public void RemoveBuff()
-        {
-            _movement.ResetSpeed(slowdown);
-            _movement.ResetJumpForce(slowdown);
+            _movement.ResetSpeed(Fields.Buffs.DirtSlowdown);
+            _movement.ResetJumpForce(Fields.Buffs.DirtSlowdown);
         }
     
-        public void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
-                AddBuff(other.gameObject);
+            if (other.CompareTag(Fields.Tags.Player))
+                AddBuff();
         }
 
-        public void OnTriggerExit2D(Collider2D other)
+        private void OnTriggerExit2D(Collider2D other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(Fields.Tags.Player))
                 RemoveBuff();
         }
     }

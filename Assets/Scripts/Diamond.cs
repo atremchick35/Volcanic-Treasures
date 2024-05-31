@@ -2,17 +2,17 @@ using Interfaces;
 using Player_Scripts;
 using UnityEngine;
 
-public class Diamond : MonoBehaviour, IInteractable, ILootable
+public class Diamond : MonoBehaviour, ILootable
 {
     private Player _player;
     
-    private void Awake() => _player = GameObject.FindWithTag("Player").GetComponent<Player>();
+    private void Awake() => _player = GameObject.FindWithTag(Fields.Tags.Player).GetComponent<Player>();
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (!gameObject.CompareTag("Chest") && other.CompareTag("Player"))
+        if (!gameObject.CompareTag(Fields.Tags.Chest) && other.CompareTag(Fields.Tags.Player))
         {
-            _player.AddDiamonds(1);
+            _player.AddDiamonds(Fields.DiamondsAmount);
             Destroy(gameObject);
             Debug.Log("Diamond claimed");
         }
@@ -20,7 +20,7 @@ public class Diamond : MonoBehaviour, IInteractable, ILootable
 
     public void GivePlayer()
     {
-        _player.AddDiamonds(1);
+        _player.AddDiamonds(Fields.DiamondsAmount);
         Debug.Log("Diamond from chest claimed");
     }
 }

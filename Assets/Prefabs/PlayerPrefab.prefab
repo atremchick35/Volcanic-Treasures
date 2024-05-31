@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1880179395302818506}
   - component: {fileID: 2112110493101940908}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Diamonds_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 7137591119728011403}
   - component: {fileID: 346511417331815890}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Coins_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -858,7 +858,7 @@ GameObject:
   - component: {fileID: 6483809703987694367}
   - component: {fileID: 5708497100512290049}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Distance_Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,6 +980,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &3768522923855607542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7136057452912656278}
+  m_Layer: 0
+  m_Name: LadderCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7136057452912656278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3768522923855607542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8808623273521938948}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3778347128355448080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,7 +1558,6 @@ GameObject:
   - component: {fileID: 8808623273521938948}
   - component: {fileID: 4629646073306071925}
   - component: {fileID: 3288133734373845031}
-  - component: {fileID: 8476316046040474146}
   - component: {fileID: 8308046706247063528}
   - component: {fileID: 7316868536060165387}
   - component: {fileID: 6632109516752364733}
@@ -1551,7 +1581,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4477770972657032394}
+  - {fileID: 7136057452912656278}
   m_Father: {fileID: 3716964000087591955}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4629646073306071925
@@ -1633,41 +1665,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &8476316046040474146
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489559202024139144}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
-  m_Direction: 0
 --- !u!114 &8308046706247063528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1680,8 +1677,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 907962bfc90ae8342a1577d60d0837ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 3288133734373845031}
+  animator: {fileID: 2309417676805545946}
+  sprite: {fileID: 4629646073306071925}
+  groundCheck: {fileID: 4477770972657032394}
+  ladderCheck: {fileID: 7136057452912656278}
+  slopeLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  ladderLayer:
+    serializedVersion: 2
+    m_Bits: 256
   speed: 10
-  jumpForce: 500
+  jumpForce: 50
   climbSpeed: 10
 --- !u!114 &7316868536060165387
 MonoBehaviour:
@@ -2380,6 +2391,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &9092490912437170949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4477770972657032394}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4477770972657032394
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9092490912437170949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8808623273521938948}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9208582229303751074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2496,7 +2538,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9208582229303751074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54776e71f47508b468e2500cb9ce09cc, type: 3}
+  m_Script: {fileID: 11500000, guid: 18047ad1cbc404f47acf0908841ed5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   coinsText: {fileID: 346511417331815890}

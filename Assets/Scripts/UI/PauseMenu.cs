@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace UI
 {
@@ -9,7 +8,10 @@ namespace UI
         [SerializeField] private bool pauseGame;
         [SerializeField] private GameObject pauseGameMenu;
         
-        void Update()
+        private const float ResumeTimeScale = 1;
+        private const float PauseTimeScale = 0;
+        
+        private void Update() 
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -23,20 +25,20 @@ namespace UI
         public void Resume()
         {
             pauseGameMenu.SetActive(false);
-            Time.timeScale = 1f;
+            Time.timeScale = ResumeTimeScale;
             pauseGame = false;
         }
 
         public void Pause()
         {
             pauseGameMenu.SetActive(true);
-            Time.timeScale = 0f;
+            Time.timeScale = PauseTimeScale;
             pauseGame = true;
         }
 
         public void LoadMenu()
         {
-            Time.timeScale = 1f;
+            Time.timeScale = ResumeTimeScale;
             SceneManager.LoadScene("Menu");
         }
     }

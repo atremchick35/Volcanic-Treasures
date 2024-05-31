@@ -9,7 +9,6 @@ public class Chest : MonoBehaviour
 {
     private Animator _animator;
     private List<ILootable> _loot;
-    private static readonly int ChestOpen = Animator.StringToHash("ChestOpen");
 
     private void Awake()
     {
@@ -19,8 +18,8 @@ public class Chest : MonoBehaviour
             gameObject.AddComponent<Boots>(),
             gameObject.AddComponent<Helmet>(),
             gameObject.AddComponent<LavaRing>(),
-            // gameObject.AddComponent<Coin>(),
-            // gameObject.AddComponent<Diamond>()
+            gameObject.AddComponent<Coin>(),
+            gameObject.AddComponent<Diamond>()
         };
         
         _animator = GetComponent<Animator>();
@@ -29,13 +28,13 @@ public class Chest : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Проверка на то, что игрок контактирует с сундуком
-        if (other.CompareTag("Player"))
+        if (other.CompareTag(Fields.Tags.Player))
         {
             //Проверка на то, что у игрока есть подходящий ключ
             var key = other.gameObject.GetComponent<Player>().Key;
-            if (key && key.CompareTag("ChestKey"))
+            if (key && key.CompareTag(Fields.Tags.ChestKey))
             {
-                _animator.SetTrigger(ChestOpen);
+                _animator.Play(Fields.AnimationState.Chest);
                 key.Rigidbody.velocity = new Vector2(0, 0);
                 Destroy(key.gameObject);
                 DropItem();

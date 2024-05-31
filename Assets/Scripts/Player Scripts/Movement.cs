@@ -23,7 +23,6 @@ namespace Player_Scripts
         
         [SerializeField] private float speed;
         [SerializeField] private float jumpForce;
-        [SerializeField] public float climbSpeed;
 
         public void SetSpeed(float acceleration) => speed *= acceleration;
         
@@ -37,7 +36,7 @@ namespace Player_Scripts
         {
             // Подъём по лестнице (Зажим Spacebar)
             if (Input.GetButton("Jump") && IsOnLadder())
-                rb.velocity = new Vector2(0, climbSpeed);
+                rb.velocity = new Vector2(0, Fields.Player.ClimbSpeed);
 
             // Прыжок (Разовое нажатие Spacebar)
             if (Input.GetButton("Jump") && (IsGrounded() || IsOnSlope()))
@@ -60,12 +59,15 @@ namespace Player_Scripts
         }
         
         // Проверка на сопрекосновение с полом
-        private bool IsGrounded() => Physics2D.OverlapCircle(groundCheck.position, 0.4f, groundLayer);
+        private bool IsGrounded() => 
+            Physics2D.OverlapCircle(groundCheck.position, Fields.Player.GroundCheckRadius, groundLayer);
 
         // Проверка на нахождение на лестнице
-        private bool IsOnLadder() => Physics2D.OverlapCircle(ladderCheck.position, 0.3f, ladderLayer);
+        private bool IsOnLadder() => 
+            Physics2D.OverlapCircle(ladderCheck.position, Fields.Player.LadderCheckRadius, ladderLayer);
         
         // Проверка на нахождение на наклонной поверхности
-        private bool IsOnSlope() => Physics2D.OverlapCircle(groundCheck.position, 0.4f, slopeLayer);
+        private bool IsOnSlope() => 
+            Physics2D.OverlapCircle(groundCheck.position, Fields.Player.SlopeCheckRadius, slopeLayer);
     }
 }

@@ -1,27 +1,18 @@
-using Interfaces;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Traps
 {
-    public class Boulder : MonoBehaviour, ITrapable
+    public class Boulder : MonoBehaviour
     {
-        [FormerlySerializedAs("GravityForce")] [SerializeField] private float gravityForce;
-        [FormerlySerializedAs("Life span")] [SerializeField] private float time;
+        [SerializeField] private float gravityForce;
+        [SerializeField] private float time;
+        [SerializeField] private Rigidbody2D rb;
 
-        private Rigidbody2D _rigidbody;
-    
-        // Start is called before the first frame update
-        void Start()
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            _rigidbody = GetComponent<Rigidbody2D>();
-        }
-
-        public void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(Fields.Tags.Player))
             {
-                _rigidbody.gravityScale = gravityForce;
+                rb.gravityScale = gravityForce;
                 Destroy(gameObject, time);
             }
         }

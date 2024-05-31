@@ -16,16 +16,16 @@ public class Door : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         // Проверка на то, что игрок контактирует с дверью
-        if (other.collider.CompareTag("Player"))
+        if (other.collider.CompareTag(Fields.Tags.Player))
         {
             // Проверка на то, что у игрока есть подходящий ключ
             var key = other.gameObject.GetComponent<Player>().Key;
-            if (key && key.CompareTag("DoorKey"))
+            if (key && key.CompareTag(Fields.Tags.DoorKey))
             {
                 key.Rigidbody.velocity = new Vector2(0, 0);
-                _animator.Play("door_open");
+                _animator.Play(Fields.AnimationState.Door);
                 Destroy(key.gameObject);
-                Invoke(nameof(ChangeTriggerState), 0.8f);
+                Invoke(nameof(ChangeTriggerState), Fields.DoorOpenTime);
             }
         }
     }

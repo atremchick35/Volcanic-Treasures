@@ -5,8 +5,8 @@ namespace Player_Scripts
 {
     public class Player : MonoBehaviour
     {
-        private int Coins { get; set; }
-        private int Diamonds { get; set; }
+        public int Coins { get; private set; }
+        public int Diamonds { get; private set; }
         public bool HasHelmet { get; set; }
         public bool HasRingLava { get; set; }
         public Key Key { get; set; }
