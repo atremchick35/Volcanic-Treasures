@@ -10,6 +10,7 @@ TagManager:
   - ChestKey
   - Dirt
   - Ladder
+  - Canvas
   layers:
   - Default
   - TransparentFX
