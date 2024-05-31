@@ -20,12 +20,10 @@ namespace UI
         [FormerlySerializedAs("StartCoordsX")] [SerializeField] private int pointX;
         [FormerlySerializedAs("StartCoordsY")] [SerializeField] private int pointY;
         
-        
         private Player _player;
         private Dictionary<Transform, float> _buffs;
 
-        private const float MaxDelay = 10;
-        private const int Shift = 1;
+        private const float MaxDelay = 10f;
 
         // Start is called before the first frame update
         void Start()
@@ -44,11 +42,7 @@ namespace UI
 
         void CheckDelay()
         {
-            foreach (var key in _buffs
-                         .OrderBy(x => x.Value)
-                         .ToDictionary(x => x.Key, x => x.Value)
-                         .Keys
-                         .ToList())
+            foreach (var key in _buffs.Keys.ToList())
             {
                 AddBuffToCanvas(key);
                 _buffs[key] -= Time.deltaTime;
@@ -79,9 +73,12 @@ namespace UI
         void MoveLeft()
         {
             // сдвигает список баффов влево
-            var counter = Shift; // ДА, КАСТЫЛЬ БЕ БЕ БЕ
+            var shiftPosition = 1;
             foreach (var key in _buffs.Keys)
-                key.position = new Vector3(counter++ * (150 + key.localScale.x), pointY, key.position.z);
+            {
+                key.position = new Vector3(shiftPosition * (150 + key.localScale.x), pointY, key.position.z);
+                shiftPosition++;
+            }
         }
     }
 }
