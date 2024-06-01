@@ -4,14 +4,14 @@ namespace Block_Scripts
 {
     public abstract class Generation : MonoBehaviour
     {
-        protected static void CreateBlock(BlockMovement currMovement, GameObject randomBlock, Vector3 pos)
+        protected static void CreateBlock(GameObject randomBlock, Vector3 pos)
         {
             var block = Instantiate(randomBlock, pos, Quaternion.identity);
             var movement = block.AddComponent<BlockMovement>();
             
-            movement.BlockBaseSpeed = currMovement.BlockBaseSpeed;
-            movement.BlockSpeedInc = currMovement.BlockSpeedInc;
-            movement.LavaPosition = currMovement.LavaPosition;
+            movement.BlockBaseSpeed = Fields.Generation.BlockBaseSpeed;
+            movement.BlockSpeedInc = Fields.Generation.BlockSpeedIncrease;
+            movement.LavaPosition = Fields.Generation.LavaPosition;
         }
     }
     
@@ -28,9 +28,8 @@ namespace Block_Scripts
             {
                 _hasSpawned = true;
                 
-                var currMovement = GetComponentInParent<BlockMovement>();
                 var pos = new Vector3(0, transform.position.y + Fields.Generation.BlockSize, 0);
-                CreateBlock(currMovement, _blocks[Random.Range(0, _blocks.Length)], pos);
+                CreateBlock(_blocks[Random.Range(0, _blocks.Length)], pos);
             }
         }
     }

@@ -17,16 +17,14 @@ namespace Block_Scripts
             Instantiate(playerPrefab);
 
             // Создание стартового "блока"
-            var block = startBlocks[Random.Range(0, startBlocks.Length)];
-            CreateBlock(block.AddComponent<BlockMovement>(), block, Vector3.zero);
+            CreateBlock(startBlocks[Random.Range(0, startBlocks.Length)], Vector3.zero);
         
             // Получение других "блоков"
             var otherBlocks = Resources.LoadAll<GameObject>(Fields.Paths.Blocks);
 
             // Создание второго "блока"
             var pos = new Vector3(0, Fields.Generation.BlockSize, 0);
-            block = otherBlocks[Random.Range(0, otherBlocks.Length)];
-            CreateBlock(block.AddComponent<BlockMovement>(), block, pos);
+            CreateBlock(otherBlocks[Random.Range(0, otherBlocks.Length)], pos);
 
             // Создание лавы
             pos = new Vector3(0, Fields.Generation.LavaPosition + Fields.Generation.LavaOffset, 0);

@@ -40,11 +40,11 @@ namespace Player_Scripts
 
             // Прыжок (Разовое нажатие Spacebar)
             if (Input.GetButton("Jump") && (IsGrounded() || IsOnSlope()))
-                rb.AddForce(new Vector2(0, jumpForce));
+                rb.velocity = new Vector2(0, jumpForce);
             
             // Огроничитель скорости на лестнице и наклонной поверхности
-            if ((IsOnLadder() || IsOnSlope()) && rb.velocity.magnitude > speed)
-                rb.velocity = rb.velocity.normalized * speed;
+            /*if ((IsOnLadder() || IsOnSlope()) && rb.velocity.magnitude > speed)
+                rb.velocity = rb.velocity.normalized * speed;*/
         }
 
         private void FixedUpdate()
