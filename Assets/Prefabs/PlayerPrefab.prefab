@@ -1692,7 +1692,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   speed: 10
-  jumpForce: 50
+  jumpForce: 10
 --- !u!114 &7316868536060165387
 MonoBehaviour:
   m_ObjectHideFlags: 0
