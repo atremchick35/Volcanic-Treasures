@@ -1560,8 +1560,8 @@ GameObject:
   - component: {fileID: 3288133734373845031}
   - component: {fileID: 8308046706247063528}
   - component: {fileID: 7316868536060165387}
-  - component: {fileID: 6632109516752364733}
   - component: {fileID: 2309417676805545946}
+  - component: {fileID: 8048018818635731734}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1693,7 +1693,6 @@ MonoBehaviour:
     m_Bits: 256
   speed: 10
   jumpForce: 50
-  climbSpeed: 10
 --- !u!114 &7316868536060165387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,8 +1705,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8694fc70786b46d4f906c11125d2c501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &6632109516752364733
-BoxCollider2D:
+--- !u!95 &2309417676805545946
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5489559202024139144}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ffc26a8d1f5da5848881f83a946091bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &8048018818635731734
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1715,7 +1735,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 5489559202024139144}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6a07afb5ad6f0ff4c85afc2336f18975, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1739,39 +1759,8 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.375}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.4}
-  m_EdgeRadius: 0
---- !u!95 &2309417676805545946
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5489559202024139144}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ffc26a8d1f5da5848881f83a946091bc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Size: {x: 1, y: 1.375}
+  m_Direction: 0
 --- !u!1 &5525995849838964728
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,8 +2533,6 @@ MonoBehaviour:
   coinsText: {fileID: 346511417331815890}
   diamondsText: {fileID: 2112110493101940908}
   distanceText: {fileID: 5708497100512290049}
-  pointX: 50
-  pointY: 50
 --- !u!114 &3328913814101456637
 MonoBehaviour:
   m_ObjectHideFlags: 0
