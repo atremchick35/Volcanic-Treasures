@@ -14,6 +14,6 @@ namespace Player_Scripts
 
         public void AddCoins(int coinsAmount) => Coins += coinsAmount;
         public void AddDiamonds(int diamondsAmount) => Diamonds += diamondsAmount;
-        public void Death() => Destroy(gameObject);
+        public void Death() => gameObject.SetActive(false); // и какие-то итоги с монетками и алмазами
     }
 }

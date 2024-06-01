@@ -2,11 +2,17 @@ public static class Fields
 {
      public static class Tags
      {
-          public const string Player = "Player";
+          public const string PlayerTag = "Player";
           public const string Canvas = "Canvas";
           public const string ChestKey = "ChestKey";
           public const string Chest = "Chest";
           public const string DoorKey = "DoorKey";
+     }
+
+     public static class Scenes
+     {
+          public const string Block1 = "Block1";
+          public const string Menu = "Menu";
      }
 
      public static class AnimationState
