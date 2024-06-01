@@ -19,7 +19,6 @@ namespace Block_Scripts
         {
             // Получить текущую скорость лавы
             var blockSpeed = BlockBaseSpeed + Time.timeSinceLevelLoad * BlockSpeedInc;
-            Debug.Log(blockSpeed);
 
             // Установить текущую позицию блока
             var position = _transform.position;

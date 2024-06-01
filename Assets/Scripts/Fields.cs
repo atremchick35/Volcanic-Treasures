@@ -27,7 +27,7 @@ public static class Fields
           public const float BlockBaseSpeed = 1;
           public const float BlockSpeedIncrease = 0.1f;
           public const float LavaPosition = -20;
-          public const float LavaOffset = 7;
+          public const float LavaOffset = 9;
      }
 
      public static class Buffs
