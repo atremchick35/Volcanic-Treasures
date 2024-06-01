@@ -40,7 +40,6 @@ namespace UI
             {
                 AddBuffToCanvas(key);
                 _buffs[key] -= Time.deltaTime;
-                // Debug.Log($"{_buffs[key]}");
                 if (_buffs[key] < 0)
                 {
                     _buffs.Remove(key);
