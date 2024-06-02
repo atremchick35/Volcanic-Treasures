@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Fields;
@@ -11,6 +12,8 @@ namespace UI
         [SerializeField] private GameObject pauseGameMenu;
         [SerializeField] private GameObject deathMenu;
         [SerializeField] private Player player;
+        [SerializeField] private TMP_Text totalCoinsText;
+        [SerializeField] private TMP_Text totalDiamondsText;
         
         private const float ResumeTimeScale = 1f;
         private const float PauseTimeScale = 0f;
@@ -18,28 +21,30 @@ namespace UI
         private void Update() 
         {
             if (Input.GetKeyDown(KeyCode.Escape) && !deathMenu.activeSelf)
-            {
-                if (pauseGame)
-                    Resume();
-                else
-                    Pause();
-            }
+                OnPause(pauseGame);
             CheckPlayer();
         }
 
-        public void Resume()
+        public void OnPause(bool isActive)
         {
-            pauseGameMenu.SetActive(false);
-            Time.timeScale = ResumeTimeScale;
-            pauseGame = false;
+            pauseGameMenu.SetActive(isActive);
+            Time.timeScale = isActive ? PauseTimeScale : ResumeTimeScale;
+            pauseGame = !isActive;
         }
 
-        public void Pause()
-        {
-            pauseGameMenu.SetActive(true);
-            Time.timeScale = PauseTimeScale;
-            pauseGame = true;
-        }
+        // public void Resume()
+        // {
+        //     pauseGameMenu.SetActive(false);
+        //     Time.timeScale = ResumeTimeScale;
+        //     pauseGame = false;
+        // }
+        //
+        // public void Pause()
+        // {
+        //     pauseGameMenu.SetActive(true);
+        //     Time.timeScale = PauseTimeScale;
+        //     pauseGame = true;
+        // }
 
         public void LoadMenu()
         {
@@ -48,10 +53,10 @@ namespace UI
         }
 
         public void LoadStart()
-        {
-            Time.timeScale = ResumeTimeScale;
-            player.gameObject.SetActive(true);
+        { 
+            // player.gameObject.SetActive(true);
             SceneManager.LoadScene(Scenes.Block1);
+            Time.timeScale = ResumeTimeScale;
         }
 
         public void CheckPlayer()
@@ -60,6 +65,8 @@ namespace UI
             {
                 Time.timeScale = 0f;
                 deathMenu.SetActive(true);
+                totalCoinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+                totalDiamondsText.text = PlayerPrefs.GetInt("Diamonds").ToString();
             }
         }
     }

@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.Services.CloudSave;
-using Unity.Services.CloudSave.Internal;
 using UnityEngine;
 
 namespace Player_Scripts
@@ -20,13 +18,20 @@ namespace Player_Scripts
         public Key Key { get; set; }
         public Dictionary<Transform, float> Effects { get; } = new();
 
+        private void Awake()
+        {
+            TotalCoins = PlayerPrefs.GetInt("Coins", 0);
+            TotalDiamonds = PlayerPrefs.GetInt("Diamonds", 0);
+        }
+
         public void AddCoins(int coinsAmount) => Coins += coinsAmount;
         public void AddDiamonds(int diamondsAmount) => Diamonds += diamondsAmount;
 
         public void Death()
         {
             gameObject.SetActive(false);
+            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + Coins);
+            PlayerPrefs.SetInt("Diamonds", PlayerPrefs.GetInt("Diamonds") + Diamonds);
         }
-
     }
 }
