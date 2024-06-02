@@ -11373,7 +11373,7 @@ GameObject:
   - component: {fileID: 1040624160974584899}
   - component: {fileID: 5585374953470058101}
   - component: {fileID: 8130179031320522429}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square (03)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
