@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static Fields;
@@ -11,6 +12,8 @@ namespace UI
         [SerializeField] private GameObject pauseGameMenu;
         [SerializeField] private GameObject deathMenu;
         [SerializeField] private Player player;
+        [SerializeField] private TMP_Text totalCoinsText;
+        [SerializeField] private TMP_Text totalDiamondsText;
         
         private const float ResumeTimeScale = 1f;
         private const float PauseTimeScale = 0f;
@@ -49,9 +52,9 @@ namespace UI
 
         public void LoadStart()
         {
-            Time.timeScale = ResumeTimeScale;
             player.gameObject.SetActive(true);
             SceneManager.LoadScene(Scenes.Block1);
+            Time.timeScale = ResumeTimeScale;
         }
 
         public void CheckPlayer()
@@ -60,6 +63,8 @@ namespace UI
             {
                 Time.timeScale = 0f;
                 deathMenu.SetActive(true);
+                totalCoinsText.text = PlayerPrefs.GetInt("Coins").ToString();
+                totalDiamondsText.text = PlayerPrefs.GetInt("Diamonds").ToString();
             }
         }
     }
