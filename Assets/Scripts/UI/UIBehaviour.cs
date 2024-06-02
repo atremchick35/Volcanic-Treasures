@@ -22,7 +22,7 @@ namespace UI
         // Start is called before the first frame update
         private void Start()
         {
-            _player = GameObject.FindWithTag(Fields.Tags.Player).GetComponent<Player>();
+            _player = GameObject.FindWithTag(Fields.Tags.PlayerTag).GetComponent<Player>();
             _buffs = _player.Effects;
         }
 
