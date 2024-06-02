@@ -9,6 +9,12 @@ public static class Fields
           public const string DoorKey = "DoorKey";
      }
 
+     public static class Scenes
+     {
+          public const string Block1 = "Block1";
+          public const string Menu = "Menu";
+     }
+
      public static class AnimationState
      {
           public const string Door = "Door";
