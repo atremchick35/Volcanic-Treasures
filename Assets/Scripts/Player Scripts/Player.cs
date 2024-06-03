@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player_Scripts
@@ -41,10 +40,7 @@ namespace Player_Scripts
             // Debug.Log(Distance);
         }
 
-        public int GetPlayerDistance()
-        {
-            return (int)MaxPlayerDistance;
-        }
+        public int GetPlayerDistance() => (int)MaxPlayerDistance;
 
         // public void CreateBuffEvent(object obj, UIEventArgs args)
         // {
@@ -53,10 +49,10 @@ namespace Player_Scripts
         
         public void Death()
         {
-            PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + Coins);
-            PlayerPrefs.SetInt("Diamonds", PlayerPrefs.GetInt("Diamonds") + Diamonds);
-            PlayerPrefs.SetInt("Distance", (int)MaxPlayerDistance);
-            PlayerPrefs.SetInt("MaxDistance", Math.Max((int)MaxPlayerDistance, PlayerPrefs.GetInt("MaxDistance")));
+            PlayerPrefs.SetInt("Coins", Coins);
+            PlayerPrefs.SetInt("Diamonds", Diamonds);
+            PlayerPrefs.SetInt("Distance", (int)MaxPlayerDistance * Coins);
+            PlayerPrefs.SetInt("MaxDistance", Math.Max((int)MaxPlayerDistance * Coins, PlayerPrefs.GetInt("MaxDistance")));
             DeathEvent?.Invoke(this, EventArgs.Empty);
             gameObject.GetComponent<Movement>().Freeze();
         }
