@@ -13,7 +13,7 @@ namespace UI
         {
             totalCoinsText.GetComponent<CountAnimation>().SetTarget(PlayerPrefs.GetInt("Coins"));
             totalDiamondsText.GetComponent<CountAnimation>().SetTarget( PlayerPrefs.GetInt("Diamonds"));
-            totalDistanceText.text = PlayerPrefs.GetInt("Distance").ToString();
+            totalDistanceText.GetComponent<CountAnimation>().SetTarget(PlayerPrefs.GetInt("Distance"));
         }
     }
 }
