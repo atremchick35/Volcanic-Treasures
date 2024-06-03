@@ -58,6 +58,7 @@ namespace Player_Scripts
             PlayerPrefs.SetInt("Distance", (int)MaxPlayerDistance);
             PlayerPrefs.SetInt("MaxDistance", Math.Max((int)MaxPlayerDistance, PlayerPrefs.GetInt("MaxDistance")));
             DeathEvent?.Invoke(this, EventArgs.Empty);
+            gameObject.GetComponent<Movement>().Freeze();
         }
     }
 }
