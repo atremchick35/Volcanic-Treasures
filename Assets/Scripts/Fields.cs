@@ -52,6 +52,8 @@ public static class Fields
           public const int Space = 150;
           public const int PointX = 50;
           public const int PointY = 50;
+          public const float ResumeTimeScale = 1f;
+          public const float PauseTimeScale = 0f;
      }
 
      public static class Coins
