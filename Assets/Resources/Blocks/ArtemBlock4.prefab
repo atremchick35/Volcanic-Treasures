@@ -2690,7 +2690,7 @@ Tilemap:
       - {fileID: 2122900704, guid: 90cdba9b47b6be849b182748895e1ce9, type: 3}
       - {fileID: 354928611, guid: 90cdba9b47b6be849b182748895e1ce9, type: 3}
       - {fileID: -600273841, guid: 90cdba9b47b6be849b182748895e1ce9, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -1, y: 8, z: 0}
@@ -11232,7 +11232,7 @@ Tilemap:
       - {fileID: 548258970, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 1071838384, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 185226819, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 2, y: 10, z: 0}
@@ -11280,7 +11280,7 @@ Tilemap:
       - {fileID: 548258970, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 1071838384, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 185226819, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: 11, z: 0}
@@ -11292,7 +11292,7 @@ Tilemap:
       - {fileID: 548258970, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 1071838384, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 185226819, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
-      m_AnimationSpeed: 5
+      m_AnimationSpeed: 5.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -3, y: 12, z: 0}
@@ -11328,7 +11328,7 @@ Tilemap:
       - {fileID: 548258970, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 1071838384, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
       - {fileID: 185226819, guid: d4d3d8d994c554d4989f35113adb0e7c, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: -3, y: 13, z: 0}
@@ -13944,7 +13944,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 324958857395176651, guid: c4dcac62c289bb44cbc8de1fbca98305, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.957
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 324958857395176651, guid: c4dcac62c289bb44cbc8de1fbca98305, type: 3}
       propertyPath: m_LocalPosition.y
