@@ -62,6 +62,19 @@ public static class Fields
           public const int Min = 1;
           public const int Max = 5;
      }
+     
+     public static class Score
+     {
+          public const int CoinMultiplier = 2;
+          public const int DiamondMultiplier = 40;
+     }
+     
+     public static class Audio
+     {
+          public const string MasterVolumeName = "MasterVolume";
+          public const float NormalVolume = -6f;
+          public const float MinVolume = -80f;
+     }
 
      public static class Key
      {
