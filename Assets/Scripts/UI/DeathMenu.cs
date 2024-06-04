@@ -11,9 +11,9 @@ namespace UI
         
         private void Start()
         {
-            totalCoinsText.text = PlayerPrefs.GetInt("Coins").ToString();
-            totalDiamondsText.text = PlayerPrefs.GetInt("Diamonds").ToString();
-            totalDistanceText.text = PlayerPrefs.GetInt("Distance").ToString();
+            totalCoinsText.GetComponent<CountAnimation>().SetTarget(PlayerPrefs.GetInt("Coins"));
+            totalDiamondsText.GetComponent<CountAnimation>().SetTarget( PlayerPrefs.GetInt("Diamonds"));
+            totalDistanceText.GetComponent<CountAnimation>().SetTarget(PlayerPrefs.GetInt("Distance"));
         }
     }
 }

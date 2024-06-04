@@ -6,23 +6,23 @@ namespace UI
 {
     public class SubMenu : SceneLoader
     {
-        [SerializeField] private bool pauseGame = true;
         [SerializeField] private GameObject pauseGameMenu;
         [SerializeField] private Player player;
+        private bool _pauseGame = true;
 
         private void Start() => player.DeathEvent += OnDeathUI;
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Escape))
-                OnPause(pauseGame);
+                OnPause(_pauseGame);
         }
 
         public void OnPause(bool isActive)
         {
             pauseGameMenu.SetActive(isActive);
             Time.timeScale = isActive ? Fields.UIBehaviour.PauseTimeScale : Fields.UIBehaviour.ResumeTimeScale;
-            pauseGame = !isActive;
+            _pauseGame = !isActive;
         }
         
         private void OnDeathUI(object sender, EventArgs e)
