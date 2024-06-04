@@ -1,82 +1,100 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class HighScores : MonoBehaviour
+namespace ScoreBoard
 {
-    const string privateCode = "Private Key";  //Key to Upload New Info
-    const string publicCode = "Public Key";   //Key to download
-    const string webURL = "http://dreamlo.com/lb/"; //  Website the keys are for
-
-    public PlayerScore[] scoreList;
-    DisplayHighscores myDisplay;
-
-    static HighScores instance; //Required for STATIC usability
-    void Awake()
+    public class HighScores : MonoBehaviour
     {
-        instance = this; //Sets Static Instance
-        myDisplay = GetComponent<DisplayHighscores>();
-    }
+        private PlayerScore[] _scoreList;
+        private DisplayHighscores _myDisplay;
+
+        public static HighScores Instance;
+        private delegate void RequestAnswerCallback(string message);
+        public delegate void DatabaseAnswerCallback(PlayerScore playerScore);
+
+        private void Awake()
+        {
+            Instance = this; //Sets Static Instance
+            _myDisplay = GetComponent<DisplayHighscores>();
+        }
+        
+        private IEnumerator SendDatabaseRequest(string uri, RequestAnswerCallback callback)
+        {
+            var request = UnityWebRequest.Get(Fields.Scoreboard.WebURL + uri);
+            yield return request.SendWebRequest();
+
+            var pages = uri.Split('/');
+            var page = pages.Length - 1;
+
+            switch (request.result)
+            {
+                case UnityWebRequest.Result.ConnectionError:
+                case UnityWebRequest.Result.DataProcessingError:
+                    Debug.LogError(pages[page] + Fields.Requests.DefaultErrorMessage + request.error);
+                    break;
+                case UnityWebRequest.Result.ProtocolError:
+                    Debug.LogError(pages[page] + Fields.Requests.ProtocolErrorMessage + request.error);
+                    break;
+                case UnityWebRequest.Result.Success:
+                    Debug.Log(pages[page] + Fields.Requests.SuccessMessage + request.downloadHandler.text);
+                    callback(request.downloadHandler.text);
+                    break;
+            }
+        }
+        
+        public void UploadScore(string username, int score)
+        {
+            // form an uri without webURL
+            var uri = Fields.Scoreboard.PrivateCode + Fields.Requests.AddRequest + username + Fields.Requests.QuerySeparator + score;
+            StartCoroutine(SendDatabaseRequest(uri, _ => {DownloadScores();}));
+        }
     
-    public static void UploadScore(string username, int score)  //CALLED when Uploading new Score to WEBSITE
-    {//STATIC to call from other scripts easily
-        instance.StartCoroutine(instance.DatabaseUpload(username,score)); //Calls Instance
-    }
-
-    IEnumerator DatabaseUpload(string userame, int score) //Called when sending new score to Website
-    {
-        WWW www = new WWW(webURL + privateCode + "/add/" + WWW.EscapeURL(userame) + "/" + score);
-        yield return www;
-
-        if (string.IsNullOrEmpty(www.error))
+        public void DownloadScores(int amount = 10)
         {
-            print("Upload Successful");
-            DownloadScores();
+            var uri = Fields.Scoreboard.PublicCode + Fields.Requests.GetFromStartRequest + amount.ToString();
+            StartCoroutine(SendDatabaseRequest(uri, DownloadCallback));
         }
-        else print("Error uploading" + www.error);
-    }
-
-    public void DownloadScores()
-    {
-        StartCoroutine("DatabaseDownload");
-    }
-    IEnumerator DatabaseDownload()
-    {
-        //WWW www = new WWW(webURL + publicCode + "/pipe/"); //Gets the whole list
-        WWW www = new WWW(webURL + publicCode + "/pipe/0/10"); //Gets top 10
-        yield return www;
-
-        if (string.IsNullOrEmpty(www.error))
+        
+        private void DownloadCallback(string message) 
         {
-            OrganizeInfo(www.text);
-            myDisplay.SetScoresToMenu(scoreList);
+            OrganizeInfo(message);
+            _myDisplay.SetScoresToMenu(_scoreList);
         }
-        else print("Error uploading" + www.error);
-    }
 
-    void OrganizeInfo(string rawData) //Divides Scoreboard info by new lines
-    {
-        string[] entries = rawData.Split(new char[] {'\n'}, System.StringSplitOptions.RemoveEmptyEntries);
-        scoreList = new PlayerScore[entries.Length];
-        for (int i = 0; i < entries.Length; i ++) //For each entry in the string array
+        public void GetPlayerScoreByName(string username, DatabaseAnswerCallback callback) 
         {
-            string[] entryInfo = entries[i].Split(new char[] {'|'});
-            string username = entryInfo[0];
-            int score = int.Parse(entryInfo[1]);
-            scoreList[i] = new PlayerScore(username,score);
-            print(scoreList[i].username + ": " + scoreList[i].score);
+            var uri = Fields.Scoreboard.PublicCode + Fields.Requests.GetByNameRequest + username;
+            StartCoroutine(SendDatabaseRequest(uri, msg => {callback(ParseEntry(msg));}));
+        }
+
+        // // Divides Scoreboard info into scoreList
+        private void OrganizeInfo(string rawData)
+        {
+            var entries = rawData.Split(Fields.Requests.LineSeparator, System.StringSplitOptions.RemoveEmptyEntries); // get all entries
+            _scoreList = new PlayerScore[entries.Length];
+            for (var i = 0; i < entries.Length; i++)
+                _scoreList[i] = ParseEntry(entries[i]);
+        }
+        
+        private PlayerScore ParseEntry(string dbEntry)
+        {
+            var entryInfo = dbEntry.Split(Fields.Requests.EntrySeparator);
+            var username = entryInfo[0];
+            var score = int.Parse(entryInfo[1]);
+            return new PlayerScore(username, score);
         }
     }
-}
 
-public struct PlayerScore //Creates place to store the variables for the name and score of each player
-{
-    public string username;
-    public int score;
-
-    public PlayerScore(string _username, int _score)
+    public struct PlayerScore
     {
-        username = _username;
-        score = _score;
+        public readonly string Username;
+        public readonly int Score;
+
+        public PlayerScore(string username, int score)
+        {
+            Username = username;
+            Score = score;
+        }
     }
 }
