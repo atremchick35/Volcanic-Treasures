@@ -1,41 +1,51 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class DisplayHighscores : MonoBehaviour 
+namespace ScoreBoard
 {
-    public TMPro.TextMeshProUGUI[] rNames;
-    public TMPro.TextMeshProUGUI[] rScores;
-    HighScores myScores;
+    public class DisplayHighscores : MonoBehaviour 
+    {
+        [SerializeField] private TMPro.TextMeshProUGUI[] rRanks;
+        [SerializeField] private TMPro.TextMeshProUGUI[] rNames;
+        [SerializeField] private TMPro.TextMeshProUGUI[] rScores;
+        private HighScores _myScores;
 
-    void Start() //Fetches the Data at the beginning
-    {
-        for (int i = 0; i < rNames.Length;i ++)
+        private void Start() //Fetches the Data at the beginning
         {
-            rNames[i].text = i + 1 + ". Fetching...";
+            _myScores = GetComponent<HighScores>();
+            StartCoroutine(RefreshHighscores());
         }
-        myScores = GetComponent<HighScores>();
-        StartCoroutine("RefreshHighscores");
-    }
-    public void SetScoresToMenu(PlayerScore[] highscoreList) //Assigns proper name and score for each text value
-    {
-        for (int i = 0; i < rNames.Length;i ++)
+        
+        public void SetScoresToMenu(PlayerScore[] highscoreList) // Assigns proper name and score for each text value
         {
-            rNames[i].text = i + 1 + ". ";
-            if (highscoreList.Length > i)
+            for (var i = 0; i < rNames.Length; i++)
             {
-                rScores[i].text = highscoreList[i].score.ToString();
-                rNames[i].text = highscoreList[i].username;
+                rRanks[i].text = i + 1 + Fields.Scoreboard.RankSeparator;
+                if (highscoreList.Length > i)
+                {
+                    rScores[i].text = highscoreList[i].Score.ToString();
+                    rNames[i].text = highscoreList[i].Username;
+                }
+                else 
+                {
+                    rScores[i].text = Fields.Scoreboard.EmptyScore;
+                    rNames[i].text = Fields.Scoreboard.EmptyName;
+                }
             }
         }
-    }
-    IEnumerator RefreshHighscores() //Refreshes the scores every 30 seconds
-    {
-        while(true)
+
+        public void RefreshLeaderboard() => StartCoroutine(RefreshHighscores());
+        
+        private IEnumerator RefreshHighscores() //Refreshes the scores every call
         {
-            myScores.DownloadScores();
-            yield return new WaitForSeconds(30);
+            for (var i = 0; i < rNames.Length; i++)
+            {
+                rRanks[i].text = i + 1 + Fields.Scoreboard.RankSeparator;
+                rNames[i].text = Fields.Scoreboard.LoadingName;
+                rScores[i].text = Fields.Scoreboard.EmptyScore;
+            }
+            _myScores.DownloadScores();
+            yield return null;
         }
     }
 }
