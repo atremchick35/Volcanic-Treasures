@@ -6143,10 +6143,10 @@ RectTransform:
   - {fileID: 1671321434}
   - {fileID: 123974954}
   - {fileID: 2008971499}
-  - {fileID: 100901731}
   - {fileID: 547596846}
   - {fileID: 1314708956}
   - {fileID: 49575341}
+  - {fileID: 100901731}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
