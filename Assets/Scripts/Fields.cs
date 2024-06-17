@@ -155,4 +155,5 @@ public static class Fields
      public const float DoorOpenTime = 0.8f;
      public const string DeathSceneName = "DeathScene";
      public const float CountAnimationDuration = 1;
+     public const float StalactiteShakeTime = 0.25f;
 }

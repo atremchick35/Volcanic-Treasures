@@ -13,7 +13,7 @@ public class CameraMovement : MonoBehaviour
     {
         var yPos = math.max(_playerPosition.position.y, Fields.CameraMovement.YOffset);
         var targetPosition = new Vector3(0, yPos, Fields.CameraMovement.ZOffset);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, 
-            ref _velocity, Fields.CameraMovement.SmoothTime);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, 
+            Fields.CameraMovement.SmoothTime);
     }
 }

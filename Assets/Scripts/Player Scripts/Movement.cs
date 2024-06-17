@@ -69,7 +69,7 @@ namespace Player_Scripts
             // Горизонтальное управление (A / D + leftArrow / rightArrow)
             var horizontal = Input.GetAxis(Fields.Player.HorizontalAxisName);
             rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
-            
+                
             // Анимация движения при беге
             animator.SetFloat(Fields.AnimationState.PlayerMove, Math.Abs(horizontal));
             sprite.flipX = horizontal < 0;

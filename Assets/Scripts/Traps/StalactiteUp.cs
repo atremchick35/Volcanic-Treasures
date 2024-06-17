@@ -1,4 +1,5 @@
 using Player_Scripts;
+using SmoothShakeFree;
 using UnityEngine;
 
 namespace Traps
@@ -7,13 +8,14 @@ namespace Traps
     {
         [SerializeField] private float gravityScale;
         [SerializeField] private AudioSource audioSource;
+        [SerializeField] private ShakeBase shaker;
         
         public void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(Fields.Tags.PlayerTag))
             {
-                audioSource.Play();
-                GetComponent<Rigidbody2D>().gravityScale = gravityScale;
+                shaker.StartShake();
+                Invoke(nameof(DropStalactite), Fields.StalactiteShakeTime);
             }
         }
 
@@ -26,6 +28,12 @@ namespace Traps
                     other.gameObject.GetComponent<Player>().Death();
             }
             Destroy(gameObject);
+        }
+
+        private void DropStalactite()
+        {
+            audioSource.Play();
+            GetComponent<Rigidbody2D>().gravityScale = gravityScale;
         }
     }
 }
