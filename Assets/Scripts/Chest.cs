@@ -2,13 +2,17 @@ using System.Collections.Generic;
 using Buffs;
 using Interfaces;
 using Player_Scripts;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Chest : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private TMP_Text giveItemText;
+    [SerializeField] private Image giveItemImage;
     
     private List<ILootable> _loot;
 
@@ -17,12 +21,12 @@ public class Chest : MonoBehaviour
         // Инициализация списка выпадаемых предметов из сундука
         _loot = new()
         {
-            gameObject.AddComponent<Boots>(),
+            // gameObject.AddComponent<Boots>(),
             // gameObject.AddComponent<Helmet>(),
             // gameObject.AddComponent<LavaRing>(),
             // gameObject.AddComponent<Immortality>(),
-            // gameObject.AddComponent<Coin>(),
-            // gameObject.AddComponent<Diamond>()
+            gameObject.AddComponent<Coin>(),
+            gameObject.AddComponent<Diamond>()
         };
     }
     
@@ -49,5 +53,6 @@ public class Chest : MonoBehaviour
     {
         var dropped = _loot[Random.Range(0, _loot.Count)];
         dropped.GivePlayer();
+        dropped.AnimateDrop(giveItemText, giveItemImage);
     }
 }

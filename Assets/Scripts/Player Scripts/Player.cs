@@ -15,7 +15,8 @@ namespace Player_Scripts
         public bool HasHelmet { get; set; }
         public bool HasRingLava { get; set; }
         public bool IsImmortal { get; set; }
-        
+
+        [SerializeField] private Animator animator;
         private float _playerDistance;
         private float _maxPlayerDistance;
         
@@ -34,6 +35,9 @@ namespace Player_Scripts
         
         public void Death()
         {
+            // Анимация смерти
+            animator.Play("Player_Death");
+            
             // Посчитать текущий счёт
             var score = (int)_maxPlayerDistance + Fields.Score.CoinMultiplier * Coins +
                         Fields.Score.DiamondMultiplier * Diamonds;

@@ -1,10 +1,13 @@
 using Interfaces;
 using Player_Scripts;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Coin : MonoBehaviour, ILootable
 {
     [SerializeField] private AudioSource audioSource;
+    private int _amount;
     private Player _player;
 
     private void Awake() => _player = GameObject.FindWithTag(Fields.Tags.PlayerTag).GetComponent<Player>();
@@ -25,7 +28,13 @@ public class Coin : MonoBehaviour, ILootable
 
     public void GivePlayer()
     {
-        var coin = Random.Range(Fields.Coins.Min, Fields.Coins.Max);
-        _player.AddCoins(coin);
+        _amount = Random.Range(Fields.Coins.Min, Fields.Coins.Max);
+        _player.AddCoins(_amount);
+    }
+
+    public void AnimateDrop(TMP_Text giveItemText, Image giveItemImage)
+    {
+        giveItemText.text = $"+{_amount}";
+        giveItemImage.sprite = Resources.Load<Sprite>("BuffsSprites/coin_0");
     }
 }

@@ -1,6 +1,8 @@
 using Interfaces;
 using Player_Scripts;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Diamond : MonoBehaviour, ILootable
 {
@@ -24,4 +26,10 @@ public class Diamond : MonoBehaviour, ILootable
     private void LetsDestroy() => Destroy(gameObject);
 
     public void GivePlayer() => _player.AddDiamonds(Fields.Diamonds.DiamondsAmount);
+    
+    public void AnimateDrop(TMP_Text giveItemText, Image giveItemImage)
+    {
+        giveItemText.text = $"+{Fields.Diamonds.DiamondsAmount}";
+        giveItemImage.sprite = Resources.Load<Sprite>("BuffsSprites/gem-1");
+    }
 }

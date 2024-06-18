@@ -1,6 +1,8 @@
 using Interfaces;
 using Player_Scripts;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Buffs
 {
@@ -36,6 +38,11 @@ namespace Buffs
             Player.Effects[image] = Fields.Buffs.UsingTime;
 
             Invoke(nameof(RemoveBuff), Fields.Buffs.UsingTime);
+        }
+
+        public void AnimateDrop(TMP_Text giveItemText, Image giveItemImage)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

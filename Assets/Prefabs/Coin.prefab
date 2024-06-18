@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 2919392902633130275}
+  coinImage: {fileID: 1643383865, guid: 2b97b6d97de5eab40a7904357e39be6b, type: 3}
 --- !u!58 &7739858422030846174
 CircleCollider2D:
   m_ObjectHideFlags: 0
