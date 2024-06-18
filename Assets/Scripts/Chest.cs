@@ -18,10 +18,11 @@ public class Chest : MonoBehaviour
         _loot = new()
         {
             gameObject.AddComponent<Boots>(),
-            gameObject.AddComponent<Helmet>(),
-            gameObject.AddComponent<LavaRing>(),
-            gameObject.AddComponent<Coin>(),
-            gameObject.AddComponent<Diamond>()
+            // gameObject.AddComponent<Helmet>(),
+            // gameObject.AddComponent<LavaRing>(),
+            // gameObject.AddComponent<Immortality>(),
+            // gameObject.AddComponent<Coin>(),
+            // gameObject.AddComponent<Diamond>()
         };
     }
     

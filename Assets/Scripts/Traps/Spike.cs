@@ -7,7 +7,7 @@ namespace Traps
     {
         public void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag(Fields.Tags.PlayerTag))
+            if (other.CompareTag(Fields.Tags.PlayerTag) && !other.GetComponent<Player>().IsImmortal)
                 other.GetComponent<Player>().Death();
         }
     }
