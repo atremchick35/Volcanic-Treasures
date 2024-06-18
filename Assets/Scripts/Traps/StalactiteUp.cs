@@ -22,7 +22,7 @@ namespace Traps
             if (other.collider.CompareTag(Fields.Tags.PlayerTag))
             {
                 var player = other.gameObject.GetComponent<Player>();
-                if (!player.HasHelmet)
+                if (!player.IsImmortal)
                     other.gameObject.GetComponent<Player>().Death();
             }
             Destroy(gameObject);

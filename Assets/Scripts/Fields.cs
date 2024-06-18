@@ -43,6 +43,7 @@ public static class Fields
           public const int BootsIconIndex = 0;
           public const int HelmetIconIndex = 1;
           public const int LavaRingIconIndex = 2;
+          public const int ImmortalityIconIndex = 3;
      }
 
      public static class UIBehaviour

@@ -14,6 +14,7 @@ namespace Player_Scripts
         public int Diamonds { get; private set; }
         public bool HasHelmet { get; set; }
         public bool HasRingLava { get; set; }
+        public bool IsImmortal { get; set; }
         
         private float _playerDistance;
         private float _maxPlayerDistance;
