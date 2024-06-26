@@ -50,6 +50,15 @@ namespace Player_Scripts
         
         private void Update()
         {
+            // Получить текущую скорость лавы
+            var blockSpeedCompensation = Fields.Generation.BlockBaseSpeed + Time.timeSinceLevelLoad * 
+                Fields.Generation.BlockSpeedIncrease;
+
+            // Установить текущую скорость игрока
+            var position = transform.position;
+            position = new Vector3(position.x, position.y - blockSpeedCompensation * Time.deltaTime, position.z);
+            transform.position = position;
+            
             // Подъём по лестнице (Зажим Spacebar)
             if (Input.GetButton("Jump") && IsOnLadder())
                 rb.velocity = new Vector2(0, Fields.Player.ClimbSpeed);

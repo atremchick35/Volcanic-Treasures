@@ -21,7 +21,7 @@ namespace ScoreBoard
         {
             for (var i = 0; i < rNames.Length; i++)
             {
-                rRanks[i].text = i + Fields.Scoreboard.RankSeparator + Fields.Scoreboard.IndexationToNumConverter;
+                rRanks[i].text = (i + Fields.Scoreboard.IndexationToNumConverter) + Fields.Scoreboard.RankSeparator;
                 if (highscoreList.Length > i)
                 {
                     rScores[i].text = highscoreList[i].Score.ToString();
@@ -41,7 +41,7 @@ namespace ScoreBoard
         {
             for (var i = 0; i < rNames.Length; i++)
             {
-                rRanks[i].text = i + Fields.Scoreboard.RankSeparator + Fields.Scoreboard.IndexationToNumConverter;
+                rRanks[i].text = (i + Fields.Scoreboard.IndexationToNumConverter) + Fields.Scoreboard.RankSeparator;
                 rNames[i].text = Fields.Scoreboard.LoadingName;
                 rScores[i].text = Fields.Scoreboard.EmptyScore;
             }

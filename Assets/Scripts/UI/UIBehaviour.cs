@@ -12,6 +12,7 @@ namespace UI
         [SerializeField] private TMP_Text coinsText;
         [SerializeField] private TMP_Text diamondsText;
         [SerializeField] private TMP_Text distanceText;
+        [SerializeField] private TMP_Text fps;
         
         private Player _player;
         private Dictionary<Transform, float> _buffs;
@@ -27,7 +28,8 @@ namespace UI
             coinsText.text = _player.Coins.ToString();
             diamondsText.text = _player.Diamonds.ToString();
             distanceText.text = _player.GetPlayerDistance().ToString();
-            CheckDelay();
+            fps.text = ((int)(Time.frameCount / Time.time)).ToString();
+            //CheckDelay();
         }
 
         private void CheckDelay()
